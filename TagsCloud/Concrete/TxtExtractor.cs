@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 
-namespace WordsCloud.Extractors
+namespace WordsCloud.Concrete
 {
     public class TxtExtractor : IDataExtractor
     {

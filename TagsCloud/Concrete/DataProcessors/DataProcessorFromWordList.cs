@@ -5,7 +5,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace WordsCloud.Concrete
+namespace WordsCloud.Concrete.DataProcessors
 {
     public class DataProcessorFromWordList : IDataProcessor
     {
