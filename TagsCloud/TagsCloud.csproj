@@ -65,6 +65,8 @@
     <Compile Include="Abstract\IFontProcessor.cs" />
     <Compile Include="Abstract\IDataProcessor.cs" />
     <Compile Include="Abstract\IAlgorithm.cs" />
+    <Compile Include="Concrete\Algorithms\SimpleColumnsAlgorithm.cs" />
+    <Compile Include="Concrete\Algorithms\SimpleLineAlgorithm.cs" />
     <Compile Include="Concrete\DataProcessors\DataProcessorFromRawText.cs" />
     <Compile Include="Concrete\DataProcessors\DataProcessorFromWordList.cs" />
     <Compile Include="Concrete\EmptyDataModifier.cs" />
@@ -72,9 +74,9 @@
     <Compile Include="Concrete\TxtExtractor.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="GeneratorSettings.cs" />
-    <Compile Include="SimpleModule.cs" />
-    <Compile Include="TagsCloudGenerator.cs" />
+    <Compile Include="Generators\Settings.cs" />
+    <Compile Include="Ninject\SimpleModule.cs" />
+    <Compile Include="Generators\TagsCloudGenerator.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

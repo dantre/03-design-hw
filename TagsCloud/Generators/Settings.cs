@@ -8,5 +8,6 @@ namespace WordsCloud
         public int MaxFont { get; set; }
         public Color TextColour { get; set; }
         public Color FontColour { get; set; }
+        public string Font { get; set; }
     }
 }

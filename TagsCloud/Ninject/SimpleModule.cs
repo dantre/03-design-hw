@@ -1,5 +1,6 @@
 using Ninject.Modules;
 using WordsCloud.Concrete;
+using WordsCloud.Concrete.Algorithms;
 using WordsCloud.Concrete.DataProcessors;
 
 namespace WordsCloud
@@ -12,6 +13,7 @@ namespace WordsCloud
             Bind<IDataProcessor>().To<DataProcessorFromWordList>();
             Bind<IDataModifier>().To<EmptyDataModifier>();
             Bind<IFontProcessor>().To<FontProcessor>();
+            Bind<IAlgorithm>().To<SimpleLineAlgorithm>();
         }
     }
 }

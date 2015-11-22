@@ -8,14 +8,14 @@ namespace WordsCloud.Concrete
     {
         public IEnumerable<Tuple<string, int>> GetFonts(Tuple<string, int>[] words, Settings settings)
         {
-            int min = words.Min(t => t.Item2);
-            int max = words.Max(t => t.Item2);
-            return words.Select(tuple => Tuple.Create(tuple.Item1, CountFont(settings.MaxFont, tuple.Item2, min, max)));
+            int minCount = words.Min(t => t.Item2);
+            int maxCount = words.Max(t => t.Item2);
+            return words.Select(tuple => Tuple.Create(tuple.Item1, CountFont(tuple.Item2, settings.MaxFont, settings.MinFont, minCount, maxCount)));
         }
 
-        private int CountFont(int maxFont, int count, int min, int max)
+        private int CountFont(int count, int maxFont, int minFont, int minCount, int maxCount)
         {
-            return (int) Math.Floor(maxFont * (count - min) * 1.0 / (max - min));
+            return  minFont + (int) Math.Ceiling((maxFont-minFont)*(count - minCount)*1.0/(maxCount - minCount));
         }
     }
 }

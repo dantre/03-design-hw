@@ -13,13 +13,13 @@ namespace WordsCloud
         {
             AppKernel = new StandardKernel(new SimpleModule());
             string filename = "simple.txt";
-//            var settings = new Settings() {TextColour = Color.Red, MinFont = 12, MaxFont = 25};
             var settings = new Settings()
             {
-                MinFont = 12,
-                MaxFont = 26,
+                MinFont = 20,
+                MaxFont = 40,
                 FontColour = Color.Blue,
-                TextColour = Color.Orange
+                TextColour = Color.Orange,
+                Font = "Arial"
             };
             var generator = new TagsCloudGenerator(filename, settings);
             generator.Generate();

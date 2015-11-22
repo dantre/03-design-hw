@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing.Imaging;
 using Ninject;
 
 namespace WordsCloud
@@ -12,7 +13,6 @@ namespace WordsCloud
         {
             this.filename = filename;
             this.settings = settings;
-
         }
 
         public void Generate()
@@ -21,10 +21,8 @@ namespace WordsCloud
             var freqs = Program.AppKernel.Get<IDataProcessor>().GetWordFrequencies(lines);
             freqs = Program.AppKernel.Get<IDataModifier>().RemoveBadWords(freqs);
             var fonts = Program.AppKernel.Get<IFontProcessor>().GetFonts(freqs, settings);
-            foreach (var tuple in fonts)
-            {
-                Console.WriteLine($"{tuple.Item1} {tuple.Item2}");
-            }
+            var image = Program.AppKernel.Get<IAlgorithm>().GetImage(fonts, settings);
+            image.Save("result.png", ImageFormat.Png);
         }
     }
 }
