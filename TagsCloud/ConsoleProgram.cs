@@ -70,7 +70,7 @@ namespace WordsCloud
                 Heading = new HeadingInfo("WordsCloud", "1.0"),
                 AddDashesToOption = true
             };
-            help.AddPreOptionsLine("Usage: app -p Someone");
+            help.AddPreOptionsLine("Usage: WordsCloud -i filename");
             help.AddOptions(this);
             
             return help;
