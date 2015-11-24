@@ -5,6 +5,6 @@ namespace WordsCloud
 {
     public interface IFontProcessor
     {
-        IEnumerable<Tuple<string, int>> GetFonts(Tuple<string, int>[] words, Settings settings);
+        IEnumerable<Tuple<string, int>> GetFonts(Tuple<string, int>[] words, Options options);
     }
 }

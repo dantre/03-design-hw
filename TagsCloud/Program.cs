@@ -1,8 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Drawing;
-using System.Text;
-using CommandLine;
-using Ninject;
+﻿using Ninject;
 
 namespace WordsCloud
 {

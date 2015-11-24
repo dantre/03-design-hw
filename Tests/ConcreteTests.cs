@@ -9,7 +9,7 @@ using WordsCloud.Concrete.WordsExtractors;
 namespace Tests
 {
     [TestFixture]
-    public class UnitTest1
+    public class ConcreteTests
     {
         [Test]
         public void FontProcessor_GetFonts_Test()
@@ -21,7 +21,7 @@ namespace Tests
                 Tuple.Create("B", 5),
                 Tuple.Create("C", 1)
             };
-            var settings = new Settings { MinFont = 10, MaxFont = 20 };
+            var settings = new Options { MinFont = 10, MaxFont = 20 };
             var expected = new[]
             {
                 Tuple.Create("A", 20),

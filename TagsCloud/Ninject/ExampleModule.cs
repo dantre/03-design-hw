@@ -1,12 +1,13 @@
-using Ninject.Modules;
+﻿using Ninject.Modules;
+using WordsCloud;
 using WordsCloud.Concrete;
 using WordsCloud.Concrete.Algorithms;
 using WordsCloud.Concrete.DataProcessors;
 using WordsCloud.Concrete.WordsExtractors;
 
-namespace WordsCloud
+namespace TagsCloud.Ninject
 {
-    public class BasicModule : NinjectModule
+    class ExampleModule : NinjectModule
     {
         public override void Load()
         {

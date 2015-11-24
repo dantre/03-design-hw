@@ -7,17 +7,17 @@ using System.Linq;
 
 namespace WordsCloud.Concrete.Algorithms
 {
-    class SimpleLineAlgorithm : IAlgorithm
+    class LineAlgorithm : IAlgorithm
     {
-        public Bitmap GetImage(IEnumerable<Tuple<string, int>> fonts, Settings settings)
+        public Bitmap GetImage(IEnumerable<Tuple<string, int>> fonts, Options options)
         {
 
-            var textImages = GetTextImages(fonts, settings);
+            var textImages = GetTextImages(fonts, options);
             int maxHeight = textImages.Max(i => i.Height);
             int sumWidth = textImages.Sum(i => i.Width);
             var resultImage = new Bitmap( sumWidth, maxHeight);
             var objGraphics = Graphics.FromImage(resultImage);
-            objGraphics.Clear(settings.FontColour);
+            objGraphics.Clear(Color.FromName(options.FontColor));
             objGraphics.Flush();
 
             int x = 0;
@@ -30,20 +30,20 @@ namespace WordsCloud.Concrete.Algorithms
             return resultImage;
         }
 
-        public IEnumerable<Bitmap> GetTextImages(IEnumerable<Tuple<string, int>> fonts, Settings settings)
+        public IEnumerable<Bitmap> GetTextImages(IEnumerable<Tuple<string, int>> fonts, Options options)
         {
             var mixedFonts = fonts.OrderBy(e => Guid.NewGuid());
-            return mixedFonts.Select(tuple => CreateBitmapImage(tuple.Item1, tuple.Item2, settings));
+            return mixedFonts.Select(tuple => CreateBitmapImage(tuple.Item1, tuple.Item2, options));
         }
 
-        private Bitmap CreateBitmapImage(string text, int size, Settings settings)
+        private Bitmap CreateBitmapImage(string text, int size, Options options)
         {
             Bitmap objBmpImage = new Bitmap(1, 1);
 
             int intWidth = 0;
             int intHeight = 0;
 
-            Font objFont = new Font(settings.Font, size, FontStyle.Bold, GraphicsUnit.Pixel);
+            Font objFont = new Font(options.FontName, size, FontStyle.Bold, GraphicsUnit.Pixel);
 
             Graphics objGraphics = Graphics.FromImage(objBmpImage);
 
@@ -54,10 +54,10 @@ namespace WordsCloud.Concrete.Algorithms
 
             objGraphics = Graphics.FromImage(objBmpImage);
 
-            objGraphics.Clear(settings.FontColour);
+            objGraphics.Clear(Color.FromName(options.FontColor));
             objGraphics.SmoothingMode = SmoothingMode.AntiAlias;
             objGraphics.TextRenderingHint = TextRenderingHint.AntiAlias;
-            objGraphics.DrawString(text, objFont, new SolidBrush(settings.TextColour), 0, 0);
+            objGraphics.DrawString(text, objFont, new SolidBrush(Color.FromName(options.TextColor)), 0, 0);
             objGraphics.Flush();
 
             return (objBmpImage);

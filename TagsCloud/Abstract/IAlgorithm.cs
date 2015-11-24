@@ -6,6 +6,6 @@ namespace WordsCloud
 {
     public interface IAlgorithm
     {
-        Bitmap GetImage(IEnumerable<Tuple<string, int>> fonts, Settings settings);
+        Bitmap GetImage(IEnumerable<Tuple<string, int>> fonts, Options options);
     }
 }

@@ -7,8 +7,8 @@
     <ProjectGuid>{B1C41E77-FD98-4295-8723-F6EA2EDE980D}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>WordsCloud</RootNamespace>
-    <AssemblyName>WordsCloud</AssemblyName>
+    <RootNamespace>TagsCloud</RootNamespace>
+    <AssemblyName>TagsCloud</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -58,8 +58,8 @@
     <Compile Include="Abstract\IAlgorithm.cs" />
     <Compile Include="Abstract\IWordsExtractor.cs" />
     <Compile Include="Abstract\IWordsModifier.cs" />
-    <Compile Include="Concrete\Algorithms\SimpleColumnsAlgorithm.cs" />
-    <Compile Include="Concrete\Algorithms\SimpleLineAlgorithm.cs" />
+    <Compile Include="Concrete\Algorithms\ColumnsAlgorithm.cs" />
+    <Compile Include="Concrete\Algorithms\LineAlgorithm.cs" />
     <Compile Include="Concrete\DataProcessor.cs" />
     <Compile Include="Concrete\EmptyWordsModifier.cs" />
     <Compile Include="Concrete\FontProcessor.cs" />
@@ -67,9 +67,10 @@
     <Compile Include="Concrete\WordsExtractors\WordsFromTextExtractor.cs" />
     <Compile Include="Concrete\WordsExtractors\WordsOnePerLineExtractor.cs" />
     <Compile Include="ConsoleProgram.cs" />
+    <Compile Include="Ninject\ExampleModule.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Settings.cs" />
+    <Compile Include="Options.cs" />
     <Compile Include="Ninject\BasicModule.cs" />
     <Compile Include="Generators\TagsCloudGenerator.cs" />
   </ItemGroup>

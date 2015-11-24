@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
+using System.Drawing.Imaging;
 using System.IO;
-using System.Text;
-using CommandLine;
-using CommandLine.Text;
 
 namespace WordsCloud
 {
@@ -25,55 +21,12 @@ namespace WordsCloud
                 if (!File.Exists(options.InputFile))
                 {
                     Console.WriteLine("File not found.");
+                    return;
                 }
+                var generator = new TagsCloudGenerator(options.InputFile, options);
+                var image = generator.Generate();
+                image.Save(options.OutputFile, ImageFormat.Png);
             }
-//
-//            var settings = new Settings
-//            {
-//                MinFont = 20,
-//                MaxFont = 40,
-//                FontColour = Color.Blue,
-//                TextColour = Color.Orange,
-//                Font = "Arial"
-//            };
-//            var t = new TagsCloudGenerator("simple.txt", settings);
-//            t.Generate();
-        }
-    }
-
-
-    class Options
-    {
-        [Option('i', "input", Required = true, HelpText = "Input file.")]
-        public string InputFile { get; set; }
-
-        [Option('o', "output", DefaultValue = "result.png", HelpText = "Output file.")]
-        public string OutputFile { get; set; }
-
-        [Option("minFont", DefaultValue = 20, HelpText = "Minimum font size.")]
-        public int MinFont { get; set; }
-
-        [Option("maxFont", DefaultValue = 40, HelpText = "Maximum font size.")]
-        public int MaxFont { get; set; }
-
-        [Option("width", HelpText = "Result image width.")]
-        public int Width { get; set; }
-
-        [Option("height", HelpText = "Result image height")]
-        public int Height { get; set; }
-
-        [HelpOption('h', "help", HelpText = "Show help information")]
-        public string GetUsage()
-        {
-            var help = new HelpText
-            {
-                Heading = new HeadingInfo("WordsCloud", "1.0"),
-                AddDashesToOption = true
-            };
-            help.AddPreOptionsLine("Usage: WordsCloud -i filename");
-            help.AddOptions(this);
-            
-            return help;
         }
     }
 }

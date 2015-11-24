@@ -6,11 +6,11 @@ namespace WordsCloud.Concrete
 {
     public class FontProcessor : IFontProcessor
     {
-        public IEnumerable<Tuple<string, int>> GetFonts(Tuple<string, int>[] words, Settings settings)
+        public IEnumerable<Tuple<string, int>> GetFonts(Tuple<string, int>[] words, Options options)
         {
             int minCount = words.Min(t => t.Item2);
             int maxCount = words.Max(t => t.Item2);
-            return words.Select(tuple => Tuple.Create(tuple.Item1, CountFont(tuple.Item2, settings.MaxFont, settings.MinFont, minCount, maxCount)));
+            return words.Select(tuple => Tuple.Create(tuple.Item1, CountFont(tuple.Item2, options.MaxFont, options.MinFont, minCount, maxCount)));
         }
 
         private int CountFont(int count, int maxFont, int minFont, int minCount, int maxCount)
