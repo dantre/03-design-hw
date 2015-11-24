@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WordsCloud.Concrete
 {
-    class EmptyWordsModifier : IWordsModifier
+    public class EmptyWordsModifier : IWordsModifier
     {
         public IEnumerable<string> RemoveBadWords(IEnumerable<string> words)
         {
