@@ -9,8 +9,8 @@ namespace WordsCloud
         public int Height { get; set; }
         public int MinFont { get; set; }
         public int MaxFont { get; set; }
-        public IList<Color> TextColours { get; set; }
-        public IList<Color> FontColours { get; set; }
+        public Color TextColour { get; set; }
+        public Color FontColour { get; set; }
         public string Font { get; set; }
     }
 }

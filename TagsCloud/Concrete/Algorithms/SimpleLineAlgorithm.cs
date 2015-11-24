@@ -17,7 +17,7 @@ namespace WordsCloud.Concrete.Algorithms
             int sumWidth = textImages.Sum(i => i.Width);
             var resultImage = new Bitmap( sumWidth, maxHeight);
             var objGraphics = Graphics.FromImage(resultImage);
-            objGraphics.Clear(settings.FontColours[0]);
+            objGraphics.Clear(settings.FontColour);
             objGraphics.Flush();
 
             int x = 0;
@@ -43,7 +43,7 @@ namespace WordsCloud.Concrete.Algorithms
             int intWidth = 0;
             int intHeight = 0;
 
-            Font objFont = new Font(settings.Font, size, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+            Font objFont = new Font(settings.Font, size, FontStyle.Bold, GraphicsUnit.Pixel);
 
             Graphics objGraphics = Graphics.FromImage(objBmpImage);
 
@@ -54,10 +54,10 @@ namespace WordsCloud.Concrete.Algorithms
 
             objGraphics = Graphics.FromImage(objBmpImage);
 
-            objGraphics.Clear(settings.FontColours[0]);
+            objGraphics.Clear(settings.FontColour);
             objGraphics.SmoothingMode = SmoothingMode.AntiAlias;
             objGraphics.TextRenderingHint = TextRenderingHint.AntiAlias;
-            objGraphics.DrawString(text, objFont, new SolidBrush(settings.TextColours[0]), 0, 0);
+            objGraphics.DrawString(text, objFont, new SolidBrush(settings.TextColour), 0, 0);
             objGraphics.Flush();
 
             return (objBmpImage);
