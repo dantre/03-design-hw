@@ -58,6 +58,7 @@
     <Compile Include="Abstract\IAlgorithm.cs" />
     <Compile Include="Abstract\IWordsExtractor.cs" />
     <Compile Include="Abstract\IWordsModifier.cs" />
+    <Compile Include="BitmapMethods.cs" />
     <Compile Include="Concrete\Algorithms\ColumnsAlgorithm.cs" />
     <Compile Include="Concrete\Algorithms\LineAlgorithm.cs" />
     <Compile Include="Concrete\DataProcessor.cs" />

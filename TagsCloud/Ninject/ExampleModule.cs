@@ -16,7 +16,7 @@ namespace TagsCloud.Ninject
             Bind<IWordsModifier>().To<EmptyWordsModifier>();
             Bind<IDataProcessor>().To<DataProcessor>();
             Bind<IFontProcessor>().To<FontProcessor>();
-            Bind<IAlgorithm>().To<LineAlgorithm>();
+            Bind<IAlgorithm>().To<ColumnsAlgorithm>();
         }
     }
 }

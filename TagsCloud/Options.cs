@@ -17,13 +17,13 @@ namespace WordsCloud
         [Option("maxFont", DefaultValue = 40, HelpText = "Maximum font size.")]
         public int MaxFont { get; set; }
 
-        [Option("width", HelpText = "Result image width.")]
+        [Option("width", DefaultValue = 400, HelpText = "Result image width.")]
         public int Width { get; set; }
 
-        [Option("height", HelpText = "Result image height")]
+        [Option("height", DefaultValue = 400, HelpText = "Result image height")]
         public int Height { get; set; }
 
-        [Option("font", DefaultValue = "Calligraphic Italic", HelpText = "Text Fontname.")]
+        [Option("font", DefaultValue = "Consolas", HelpText = "Text Fontname.")]
         public string FontName { get; set; }
 
         [Option("textColor", DefaultValue = "Orange", HelpText = "Text color.")]

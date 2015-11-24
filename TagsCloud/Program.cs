@@ -1,4 +1,5 @@
 ﻿using Ninject;
+using TagsCloud.Ninject;
 
 namespace WordsCloud
 {
@@ -8,7 +9,7 @@ namespace WordsCloud
       
         private static void Main(string[] args)
         {
-            AppKernel = new StandardKernel(new BasicModule());
+            AppKernel = new StandardKernel(new ExampleModule());
             var console = new ConsoleProgram(args);
             console.Run();
         }
