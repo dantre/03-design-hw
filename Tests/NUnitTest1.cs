@@ -1,10 +1,10 @@
 ﻿using System;
-using System.Collections;
 using System.Linq;
 using NUnit.Framework;
 using WordsCloud;
 using WordsCloud.Concrete;
 using WordsCloud.Concrete.DataProcessors;
+using WordsCloud.Concrete.WordsExtractors;
 
 namespace Tests
 {
@@ -19,9 +19,9 @@ namespace Tests
             {
                 Tuple.Create("A", 12),
                 Tuple.Create("B", 5),
-                Tuple.Create("C", 1),
+                Tuple.Create("C", 1)
             };
-            var settings = new Settings() { MinFont = 10, MaxFont = 20 };
+            var settings = new Settings { MinFont = 10, MaxFont = 20 };
             var expected = new[]
             {
                 Tuple.Create("A", 20),
@@ -31,7 +31,7 @@ namespace Tests
 
             var result = proc.GetFonts(data, settings).ToList();
 
-            CollectionAssert.AreEqual(expected, result as ICollection);
+            CollectionAssert.AreEqual(expected, result);
         }
 
         [Test]
@@ -60,6 +60,30 @@ namespace Tests
             var result = modifier.RemoveBadWords(data);
 
             Assert.AreEqual(data, result);
+        }
+
+        [Test]
+        public void WordsFromTextExtractor_GetWords_Test()
+        {
+            var wordsExtractor = new WordsFromTextExtractor();
+            string data = @"A B CC, A ! D";
+            string[] expectedResult = {"A", "B", "CC", "A", "D"};
+
+            var result = wordsExtractor.GetWords(data);
+
+            CollectionAssert.AreEqual(expectedResult,  result);
+        }
+
+        [Test]
+        public void WordsOnePerLineExtractor_GetWords_Test()
+        {
+            var wordsExtractor = new WordsOnePerLineExtractor();
+            string data = @"A\r\nB\r\n\r\nC";
+            string[] expectedResult = { "A", "B", "C"};
+
+            var result = wordsExtractor.GetWords(data);
+
+            CollectionAssert.AreEqual(expectedResult, result);
         }
     }
 }

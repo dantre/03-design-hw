@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace WordsCloud.Concrete.WordsExtractors
 {
-    class WordsFromTextExtractor : IWordsExtractor
+    public class WordsFromTextExtractor : IWordsExtractor
     {
         public IEnumerable<string> GetWords(string rawText)
         {
