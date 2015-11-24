@@ -5,8 +5,6 @@ using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.Drawing.Text;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using WordsCloud;
 
 namespace TagsCloud
@@ -46,9 +44,9 @@ namespace TagsCloud
 
         public static Bitmap CopyRegionIntoImage(Bitmap srcBitmap, Rectangle srcRegion, Bitmap destBitmap, Rectangle destRegion)
         {
-            using (Graphics grD = Graphics.FromImage(destBitmap))
+            using (Graphics graphics = Graphics.FromImage(destBitmap))
             {
-                grD.DrawImage(srcBitmap, destRegion, srcRegion, GraphicsUnit.Pixel);
+                graphics.DrawImage(srcBitmap, destRegion, srcRegion, GraphicsUnit.Pixel);
             }
             return destBitmap;
         }

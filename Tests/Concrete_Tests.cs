@@ -9,7 +9,7 @@ using WordsCloud.Concrete.WordsExtractors;
 namespace Tests
 {
     [TestFixture]
-    public class ConcreteTests
+    public class Concrete_Tests
     {
         [Test]
         public void FontProcessor_GetFonts_Test()
