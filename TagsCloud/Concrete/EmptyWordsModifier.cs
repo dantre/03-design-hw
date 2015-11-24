@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace WordsCloud.Concrete
 {
-    public class EmptyDataModifier : IDataModifier
+    class EmptyWordsModifier : IWordsModifier
     {
-        public Tuple<string, int>[] RemoveBadWords(Tuple<string, int>[] words)
+        public IEnumerable<string> RemoveBadWords(IEnumerable<string> words)
         {
             return words;
         }

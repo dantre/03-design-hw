@@ -2,11 +2,8 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
-using System.Drawing.Imaging;
 using System.Drawing.Text;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace WordsCloud.Concrete.Algorithms
 {
@@ -20,7 +17,7 @@ namespace WordsCloud.Concrete.Algorithms
             int sumWidth = textImages.Sum(i => i.Width);
             var resultImage = new Bitmap( sumWidth, maxHeight);
             var objGraphics = Graphics.FromImage(resultImage);
-            objGraphics.Clear(settings.FontColour);
+            objGraphics.Clear(settings.FontColours[0]);
             objGraphics.Flush();
 
             int x = 0;
@@ -57,10 +54,10 @@ namespace WordsCloud.Concrete.Algorithms
 
             objGraphics = Graphics.FromImage(objBmpImage);
 
-            objGraphics.Clear(settings.FontColour);
+            objGraphics.Clear(settings.FontColours[0]);
             objGraphics.SmoothingMode = SmoothingMode.AntiAlias;
             objGraphics.TextRenderingHint = TextRenderingHint.AntiAlias;
-            objGraphics.DrawString(text, objFont, new SolidBrush(settings.TextColour), 0, 0);
+            objGraphics.DrawString(text, objFont, new SolidBrush(settings.TextColours[0]), 0, 0);
             objGraphics.Flush();
 
             return (objBmpImage);

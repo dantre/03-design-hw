@@ -1,13 +1,12 @@
-﻿using System.Collections.Generic;
-using System.IO;
+﻿using System.IO;
 
 namespace WordsCloud.Concrete
 {
     public class TxtExtractor : IDataExtractor
     {
-        public IEnumerable<string> GetRawText(string filename)
+        public string GetRawText(string filename)
         {
-            return File.ReadAllLines(filename);
+            return File.ReadAllText(filename);
         }
     }
 }

@@ -5,6 +5,6 @@ namespace WordsCloud
 {
     public interface IDataProcessor
     {
-        Tuple<string, int>[] GetWordFrequencies(IEnumerable<string> lines);
+        Tuple<string, int>[] GetWordsFrequencies(IEnumerable<string> words);
     }
 }

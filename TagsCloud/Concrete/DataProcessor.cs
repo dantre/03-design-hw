@@ -1,18 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace WordsCloud.Concrete.DataProcessors
 {
-    public class DataProcessorFromWordList : IDataProcessor
+    public class DataProcessor: IDataProcessor
     {
-        public Tuple<string, int>[] GetWordFrequencies(IEnumerable<string> lines)
+        public Tuple<string, int>[] GetWordsFrequencies(IEnumerable<string> words)
         {
-            return lines
-                .Select(w => w.ToLower())
+            return words.Select(w => w.ToLower())
                 .GroupBy(w => w)
                 .Select(w => Tuple.Create(w.Key, w.Count()))
                 .OrderByDescending(tuple => tuple.Item2)
