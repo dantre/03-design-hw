@@ -42,7 +42,8 @@
     <Reference Include="System.Drawing" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ConcreteTests.cs" />
+    <Compile Include="BitmapMethods_Test.cs" />
+    <Compile Include="Concrete_Tests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
