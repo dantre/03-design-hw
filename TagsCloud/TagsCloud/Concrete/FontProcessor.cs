@@ -16,7 +16,7 @@ namespace TagsCloud.Concrete
 
         private int CountFont(int count, int maxFont, int minFont, int minCount, int maxCount)
         {
-            return  minFont + (int) Math.Ceiling((maxFont-minFont)*(count - minCount)*1.0/(maxCount - minCount));
+            return minFont + (int) Math.Ceiling((maxFont - minFont) * (count - minCount) * 1.0 / (maxCount - minCount));
         }
     }
 }

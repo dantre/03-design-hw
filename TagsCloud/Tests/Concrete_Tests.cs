@@ -7,6 +7,11 @@ using TagsCloud.Concrete.WordsExtractors;
 
 namespace Tests
 {
+    // CR (krait): Тесты на разные компоненты нужно разложить в разные TestFixture.
+    // CR (krait): Кроме того, стоит возродить традицию понятного именования тестов.
+    // CR (krait): Тестов нужно больше. Например, сейчас непонятно, как себя поведёт WordsOnePerLineExtractor, если в файле есть пустые строки. 
+    // CR (krait): Нет тестов на *Algorithm и тестов, проверяющих что всё вместе работает.
+
     [TestFixture]
     public class Concrete_Tests
     {

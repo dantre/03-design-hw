@@ -6,6 +6,7 @@ using TagsCloud.Concrete.WordsExtractors;
 
 namespace TagsCloud.NInject
 {
+    // CR (krait): Зачем нужен этот класс?
     public class BasicModule : NinjectModule
     {
         public override void Load()

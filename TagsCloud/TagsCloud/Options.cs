@@ -3,6 +3,8 @@ using CommandLine.Text;
 
 namespace TagsCloud
 {
+    // CR (krait): Хочется иметь возможность задавать алгоритм, по которому будет генериться картинка.
+
     public class Options
     {
         [Option('i', "input", Required = true, HelpText = "Input file.")]
@@ -29,6 +31,7 @@ namespace TagsCloud
         [Option("textColor", DefaultValue = "Orange", HelpText = "Text color.")]
         public string TextColor { get; set; }
 
+        // CR (krait): Видимо, имеется в виду "background color"?
         [Option("fontColor", DefaultValue = "Blue", HelpText = "Font color.")]
         public string FontColor { get; set; }
 

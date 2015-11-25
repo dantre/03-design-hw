@@ -19,6 +19,7 @@ namespace TagsCloud.Generators
         {
             var text = Program.AppKernel.Get<IDataExtractor>().GetRawText(filename);
             var words = Program.AppKernel.Get<IWordsExtractor>().GetWords(text);
+            // CR (krait): Почему переменная называется так?
             var wordsWithoutRepeats = Program.AppKernel.Get<IWordsModifier>().RemoveBadWords(words);
             var tuples = Program.AppKernel.Get<IDataProcessor>().GetWordsFrequencies(wordsWithoutRepeats);
             var fonts = Program.AppKernel.Get<IFontProcessor>().GetFonts(tuples, options);
