@@ -15,7 +15,7 @@ namespace TagsCloud.Concrete.Algorithms
             int sumWidth = textImages.Sum(i => i.Width);
             var resultImage = new Bitmap( sumWidth, maxHeight);
             var objGraphics = Graphics.FromImage(resultImage);
-            objGraphics.Clear(Color.FromName(options.FontColor));
+            objGraphics.Clear(Color.FromName(options.BackgroundColor));
             objGraphics.Flush();
 
             int x = 0;

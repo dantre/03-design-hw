@@ -41,7 +41,7 @@ namespace Tests
         [Test]
         public void DataProcessor_GetWordFrequencies_Test()
         {
-            var proc = new DataProcessor();
+            var proc = new FrequencyCounter();
             var data = new[] {"a", "b", "c", "a", "a", "b"};
             var expected = new[]
             {
@@ -58,7 +58,7 @@ namespace Tests
         [Test]
         public void EmptyWordsModifier_RemoveBadWords_Test()
         {
-            var modifier = new EmptyWordsModifier();
+            var modifier = new WordsFilter();
             var data = new[] { "A", "B", "A", "C" };
 
             var result = modifier.RemoveBadWords(data);

@@ -57,24 +57,25 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Abstract\IAlgorithm.cs" />
-    <Compile Include="Abstract\IDataExtractor.cs" />
-    <Compile Include="Abstract\IDataProcessor.cs" />
+    <Compile Include="Abstract\IFilerReader.cs" />
+    <Compile Include="Abstract\IFrequencyCounter.cs" />
     <Compile Include="Abstract\IFontProcessor.cs" />
+    <Compile Include="Abstract\IOptionsValidator.cs" />
     <Compile Include="Abstract\IWordsExtractor.cs" />
-    <Compile Include="Abstract\IWordsModifier.cs" />
+    <Compile Include="Abstract\IWordsFilter.cs" />
     <Compile Include="BitmapMethods.cs" />
     <Compile Include="Concrete\Algorithms\ColumnsAlgorithm.cs" />
     <Compile Include="Concrete\Algorithms\LineAlgorithm.cs" />
-    <Compile Include="Concrete\DataProcessor.cs" />
-    <Compile Include="Concrete\EmptyWordsModifier.cs" />
+    <Compile Include="Concrete\FrequencyCounter.cs" />
+    <Compile Include="Concrete\OptionsValidator.cs" />
+    <Compile Include="Concrete\WordsFilter.cs" />
     <Compile Include="Concrete\FontProcessor.cs" />
-    <Compile Include="Concrete\TxtExtractor.cs" />
+    <Compile Include="Concrete\TxtReader.cs" />
     <Compile Include="Concrete\WordsExtractors\WordsFromTextExtractor.cs" />
     <Compile Include="Concrete\WordsExtractors\WordsOnePerLineExtractor.cs" />
     <Compile Include="ConsoleProgram.cs" />
     <Compile Include="Generators\TagsCloudGenerator.cs" />
     <Compile Include="NInject\BasicModule.cs" />
-    <Compile Include="NInject\ExampleModule.cs" />
     <Compile Include="Options.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -5,7 +5,7 @@ using TagsCloud.Abstract;
 
 namespace TagsCloud.Concrete
 {
-    public class DataProcessor: IDataProcessor
+    public class FrequencyCounter: IFrequencyCounter
     {
         public Tuple<string, int>[] GetWordsFrequencies(IEnumerable<string> words)
         {

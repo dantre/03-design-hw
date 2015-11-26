@@ -30,10 +30,12 @@ namespace TagsCloud
 
         [Option("textColor", DefaultValue = "Orange", HelpText = "Text color.")]
         public string TextColor { get; set; }
+        
+        [Option("backgroundColor", DefaultValue = "Blue", HelpText = "Background color.")]
+        public string BackgroundColor { get; set; }
 
-        // CR (krait): Видимо, имеется в виду "background color"?
-        [Option("fontColor", DefaultValue = "Blue", HelpText = "Font color.")]
-        public string FontColor { get; set; }
+        [Option("algorithm", DefaultValue = 1, HelpText ="Algorithm to use. (1 - Columns Algo, 2 - Line Algo")]
+        public int AlgorithmNumber { get; set; }
 
         [HelpOption('h', "help", HelpText = "Show help information")]
         public string GetUsage()

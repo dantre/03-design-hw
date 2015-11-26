@@ -1,4 +1,4 @@
-using Ninject.Modules;
+п»їusing Ninject.Modules;
 using TagsCloud.Abstract;
 using TagsCloud.Concrete;
 using TagsCloud.Concrete.Algorithms;
@@ -6,17 +6,17 @@ using TagsCloud.Concrete.WordsExtractors;
 
 namespace TagsCloud.NInject
 {
-    // CR (krait): Зачем нужен этот класс?
-    public class BasicModule : NinjectModule
+    class BasicModule : NinjectModule
     {
         public override void Load()
         {
-            Bind<IDataExtractor>().To<TxtExtractor>();
+            Bind<IFilerReader>().To<TxtReader>();
             Bind<IWordsExtractor>().To<WordsFromTextExtractor>();
-            Bind<IWordsModifier>().To<EmptyWordsModifier>();
-            Bind<IDataProcessor>().To<DataProcessor>();
+            Bind<IWordsFilter>().To<WordsFilter>();
+            Bind<IFrequencyCounter>().To<FrequencyCounter>();
             Bind<IFontProcessor>().To<FontProcessor>();
-            Bind<IAlgorithm>().To<LineAlgorithm>();
+            Bind<IOptionsValidator>().To<OptionsValidator>();
+            Bind<IAlgorithm>().To<ColumnsAlgorithm>();
         }
     }
 }

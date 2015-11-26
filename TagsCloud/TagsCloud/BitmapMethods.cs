@@ -32,7 +32,7 @@ namespace TagsCloud
 
             objGraphics = Graphics.FromImage(objBmpImage);
 
-            objGraphics.Clear(Color.FromName(options.FontColor));
+            objGraphics.Clear(Color.FromName(options.BackgroundColor));
             objGraphics.SmoothingMode = SmoothingMode.AntiAlias;
             objGraphics.TextRenderingHint = TextRenderingHint.AntiAlias;
             objGraphics.DrawString(text, objFont, new SolidBrush(Color.FromName(options.TextColor)), 0, 0);

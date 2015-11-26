@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Drawing.Imaging;
 using System.IO;
+using Ninject;
+using TagsCloud.Abstract;
 using TagsCloud.Generators;
 
 namespace TagsCloud
@@ -18,6 +20,11 @@ namespace TagsCloud
             var options = new Options();
             if (CommandLine.Parser.Default.ParseArguments(args, options))
             {
+                if (!Program.AppKernel.Get<IOptionsValidator>().IsValid(options))
+                {
+                    Console.WriteLine("Parameters are invalid.");
+                    return;
+                }
                 if (!File.Exists(options.InputFile))
                 {
                     Console.WriteLine("File not found.");

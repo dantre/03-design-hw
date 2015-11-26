@@ -1,6 +1,11 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Collections.Generic;
+using System.Drawing;
 using Ninject;
+using Ninject.Modules;
 using TagsCloud.Abstract;
+using TagsCloud.Concrete.Algorithms;
+using TagsCloud.NInject;
 
 namespace TagsCloud.Generators
 {
@@ -17,11 +22,10 @@ namespace TagsCloud.Generators
 
         public Image Generate()
         {
-            var text = Program.AppKernel.Get<IDataExtractor>().GetRawText(filename);
+            var text = Program.AppKernel.Get<IFilerReader>().GetRawText(filename);
             var words = Program.AppKernel.Get<IWordsExtractor>().GetWords(text);
-            // CR (krait): Почему переменная называется так?
-            var wordsWithoutRepeats = Program.AppKernel.Get<IWordsModifier>().RemoveBadWords(words);
-            var tuples = Program.AppKernel.Get<IDataProcessor>().GetWordsFrequencies(wordsWithoutRepeats);
+            var filteredWords = Program.AppKernel.Get<IWordsFilter>().RemoveBadWords(words);
+            var tuples = Program.AppKernel.Get<IFrequencyCounter>().GetWordsFrequencies(filteredWords);
             var fonts = Program.AppKernel.Get<IFontProcessor>().GetFonts(tuples, options);
             var image = Program.AppKernel.Get<IAlgorithm>().GetImage(fonts, options);
             return image;
