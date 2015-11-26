@@ -60,14 +60,12 @@
     <Compile Include="Abstract\IFilerReader.cs" />
     <Compile Include="Abstract\IFrequencyCounter.cs" />
     <Compile Include="Abstract\IFontProcessor.cs" />
-    <Compile Include="Abstract\IOptionsValidator.cs" />
     <Compile Include="Abstract\IWordsExtractor.cs" />
     <Compile Include="Abstract\IWordsFilter.cs" />
     <Compile Include="BitmapMethods.cs" />
     <Compile Include="Concrete\Algorithms\ColumnsAlgorithm.cs" />
     <Compile Include="Concrete\Algorithms\LineAlgorithm.cs" />
     <Compile Include="Concrete\FrequencyCounter.cs" />
-    <Compile Include="Concrete\OptionsValidator.cs" />
     <Compile Include="Concrete\WordsFilter.cs" />
     <Compile Include="Concrete\FontProcessor.cs" />
     <Compile Include="Concrete\TxtReader.cs" />
@@ -84,7 +82,14 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Samples\example.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Samples\simple.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

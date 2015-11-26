@@ -34,8 +34,8 @@ namespace TagsCloud
         [Option("backgroundColor", DefaultValue = "Blue", HelpText = "Background color.")]
         public string BackgroundColor { get; set; }
 
-        [Option("algorithm", DefaultValue = 1, HelpText ="Algorithm to use. (1 - Columns Algo, 2 - Line Algo")]
-        public int AlgorithmNumber { get; set; }
+        [Option("algorithm", DefaultValue = "Column", HelpText ="Algorithm to use. (Column - Columns Algorithm, Line - Line Algorithm.")]
+        public string AlgorithmName { get; set; }
 
         [HelpOption('h', "help", HelpText = "Show help information")]
         public string GetUsage()

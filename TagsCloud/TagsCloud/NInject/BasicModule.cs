@@ -1,4 +1,6 @@
-﻿using Ninject.Modules;
+﻿using System;
+using System.Collections.Generic;
+using Ninject.Modules;
 using TagsCloud.Abstract;
 using TagsCloud.Concrete;
 using TagsCloud.Concrete.Algorithms;
@@ -15,8 +17,8 @@ namespace TagsCloud.NInject
             Bind<IWordsFilter>().To<WordsFilter>();
             Bind<IFrequencyCounter>().To<FrequencyCounter>();
             Bind<IFontProcessor>().To<FontProcessor>();
-            Bind<IOptionsValidator>().To<OptionsValidator>();
-            Bind<IAlgorithm>().To<ColumnsAlgorithm>();
+            Bind<IAlgorithm>().To<ColumnsAlgorithm>().Named("Column");
+            Bind<IAlgorithm>().To<LineAlgorithm>().Named("Line");
         }
     }
 }
