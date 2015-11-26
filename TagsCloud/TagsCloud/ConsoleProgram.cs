@@ -3,7 +3,6 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using Ninject;
-using TagsCloud.Abstract;
 using TagsCloud.Generators;
 
 namespace TagsCloud
@@ -32,7 +31,7 @@ namespace TagsCloud
                 {
                     image = generator.Generate();
                 }
-                catch (ActivationException exception)
+                catch (ActivationException)
                 {
                     Console.WriteLine("Unknown algorithm");
                     return;

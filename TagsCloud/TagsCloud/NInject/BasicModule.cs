@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using Ninject.Modules;
+﻿using Ninject.Modules;
 using TagsCloud.Abstract;
 using TagsCloud.Concrete;
 using TagsCloud.Concrete.Algorithms;

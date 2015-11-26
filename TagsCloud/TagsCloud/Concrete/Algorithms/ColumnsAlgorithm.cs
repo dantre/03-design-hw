@@ -8,7 +8,7 @@ namespace TagsCloud.Concrete.Algorithms
 {
     public class ColumnsAlgorithm : IAlgorithm
     {
-        public Bitmap GetImage(IEnumerable<Tuple<string, int>> fonts, Options options)
+        public Bitmap GetBitmap(IEnumerable<Tuple<string, int>> fonts, Options options)
         {
             var textImages = BitmapMethods.GetTextImages(fonts, options);
             int maxHeight = textImages.Max(i => i.Height);

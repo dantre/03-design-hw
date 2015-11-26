@@ -8,7 +8,7 @@ namespace TagsCloud.Concrete.Algorithms
 {
     class LineAlgorithm : IAlgorithm
     {
-        public Bitmap GetImage(IEnumerable<Tuple<string, int>> fonts, Options options)
+        public Bitmap GetBitmap(IEnumerable<Tuple<string, int>> fonts, Options options)
         {
             var textImages = BitmapMethods.GetTextImages(fonts, options);
             int maxHeight = textImages.Max(i => i.Height);
@@ -25,7 +25,7 @@ namespace TagsCloud.Concrete.Algorithms
                 resultImage = BitmapMethods.CopyRegionIntoImage(image, new Rectangle(0,0, image.Width,image.Height), resultImage, new Rectangle(x, (maxHeight-image.Height)/2, image.Width,image.Height));
                 x += image.Width;
             }
-            return resultImage;
+            return BitmapMethods.ResizeImage(resultImage, options.Width, options.Height);
         }
     }
 }

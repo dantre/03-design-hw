@@ -6,6 +6,6 @@ namespace TagsCloud.Abstract
 {
     public interface IAlgorithm
     {
-        Bitmap GetImage(IEnumerable<Tuple<string, int>> fonts, Options options);
+        Bitmap GetBitmap(IEnumerable<Tuple<string, int>> fonts, Options options);
     }
 }

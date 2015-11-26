@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
+﻿using System.Drawing;
 using Ninject;
-using Ninject.Modules;
 using TagsCloud.Abstract;
-using TagsCloud.Concrete.Algorithms;
-using TagsCloud.NInject;
 
 namespace TagsCloud.Generators
 {
@@ -27,7 +22,7 @@ namespace TagsCloud.Generators
             var filteredWords = Program.AppKernel.Get<IWordsFilter>().RemoveBadWords(words);
             var tuples = Program.AppKernel.Get<IFrequencyCounter>().GetWordsFrequencies(filteredWords);
             var fonts = Program.AppKernel.Get<IFontProcessor>().GetFonts(tuples, options);
-            var image = Program.AppKernel.Get<IAlgorithm>(options.AlgorithmName).GetImage(fonts, options);
+            var image = Program.AppKernel.Get<IAlgorithm>(options.AlgorithmName).GetBitmap(fonts, options);
             return image;
         }
     }

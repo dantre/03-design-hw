@@ -56,8 +56,11 @@
   </Choose>
   <ItemGroup>
     <Compile Include="BitmapMethods_Test.cs" />
+    <Compile Include="Concrete\ColumnAlgorithm_Tests.cs" />
     <Compile Include="Concrete\FontProcessor_Tests.cs" />
     <Compile Include="Concrete\FrequencyCounter_Tests.cs" />
+    <Compile Include="Concrete\LineAlgorithm_Tests.cs" />
+    <Compile Include="ConsoleProgram_Tests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Concrete\WordeOnePerLineExtractor_Tests.cs" />
     <Compile Include="Concrete\WordsFilter_Tests.cs" />
