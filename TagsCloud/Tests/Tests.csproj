@@ -56,8 +56,12 @@
   </Choose>
   <ItemGroup>
     <Compile Include="BitmapMethods_Test.cs" />
-    <Compile Include="Concrete_Tests.cs" />
+    <Compile Include="Concrete\FontProcessor_Tests.cs" />
+    <Compile Include="Concrete\FrequencyCounter_Tests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Concrete\WordeOnePerLineExtractor_Tests.cs" />
+    <Compile Include="Concrete\WordsFilter_Tests.cs" />
+    <Compile Include="Concrete\WordsFromTextExtractor_Tests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -68,6 +72,7 @@
       <Name>TagsCloud</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>

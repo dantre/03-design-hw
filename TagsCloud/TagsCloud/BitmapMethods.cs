@@ -16,7 +16,7 @@ namespace TagsCloud
             return mixedFonts.Select(tuple => CreateBitmapImage(tuple.Item1, tuple.Item2, options));
         }
 
-        private static Bitmap CreateBitmapImage(string text, int size, Options options)
+        public static Bitmap CreateBitmapImage(string text, int size, Options options)
         {
             Bitmap objBmpImage = new Bitmap(1, 1);
             int intWidth = 0;
