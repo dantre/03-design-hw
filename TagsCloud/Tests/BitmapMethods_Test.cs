@@ -4,7 +4,7 @@ using TagsCloud;
 
 namespace Tests
 {
-    // CR (krait): √овор€ про возврат к старой схеме именовани€, € имел в виду формат <Method>_should_<do_something>. —ейчас названи€ не очень пон€тные.
+    // CR (krait): Ќазвание класса в названи€х тестов лишнее: оно и так содержитс€ в названии fixture.
 
     [TestFixture]
     public class BitmapMethods_Test

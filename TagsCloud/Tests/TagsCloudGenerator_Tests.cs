@@ -33,9 +33,10 @@ namespace Tests
                 AlgorithmName = "Column"
             };
             Program.AppKernel = new StandardKernel();
-            var reader = NSubstitute.Substitute.For<IFileReader>();
+            var reader = Substitute.For<IFileReader>();
             reader.GetRawText("test").Returns("test text");
             Program.AppKernel.Bind<IFileReader>().ToConstant(reader);
+            // CR (krait): Надо сделать как-нибудь так, чтобы здесь задавались только биндинги, отличные от стандартных. То есть только Bind<IFileReader>().ToConstant(reader) в данном случае.
             Program.AppKernel.Bind<IWordsExtractor>().To<WordsFromTextExtractor>();
             Program.AppKernel.Bind<IWordsFilter>().To<WordsFilter>();
             Program.AppKernel.Bind<IFrequencyCounter>().To<FrequencyCounter>();
