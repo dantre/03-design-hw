@@ -10,8 +10,7 @@ namespace TagsCloud.Concrete.Algorithms
     {
         public Bitmap GetBitmap(IEnumerable<Tuple<string, int>> fonts, Options options)
         {
-            var textImages = BitmapMethods.GetTextImages(fonts, options);
-            // CR (krait): Multiple enumeration: тело метода BitmapMethods.GetTextImages фактически исполняется 3 раза.
+            var textImages = BitmapMethods.GetTextImages(fonts, options).ToList();
             int maxHeight = textImages.Max(i => i.Height);
             int sumWidth = textImages.Sum(i => i.Width);
 
@@ -24,8 +23,6 @@ namespace TagsCloud.Concrete.Algorithms
             objGraphics.Flush();
 
             int x = 0;
-            // CR (krait): Зачем нужна эта переменная?
-            int y = 0;
             int yAddition = 0;
             foreach (var image in textImages)
             {

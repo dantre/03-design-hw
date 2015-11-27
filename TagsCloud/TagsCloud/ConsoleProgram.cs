@@ -2,6 +2,7 @@
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
+using CommandLine;
 using Ninject;
 using TagsCloud.Generators;
 
@@ -18,7 +19,7 @@ namespace TagsCloud
         public void Run()
         {
             var options = new Options();
-            if (CommandLine.Parser.Default.ParseArguments(args, options))
+            if (Parser.Default.ParseArguments(args, options))
             {
                 if (!File.Exists(options.InputFile))
                 {
@@ -31,9 +32,7 @@ namespace TagsCloud
                 {
                     image = generator.Generate();
                 }
-                // CR (krait): Эта логика должна быть внутри генератора. Причем обернут должен быть только один вызов Get, потому что если вдруг всплывёт какой-то косяк с другими регистрациями, эксепшн не должен пойматься.
-                // CR (krait): Но сообщение должно печататься здесь. Можно пробрасывать сюда новый, специальный эксепшн или возвращать ошибку.
-                catch (ActivationException) 
+                catch (UnknownAlgorithmException) 
                 {
                     Console.WriteLine("Unknown algorithm");
                     return;
@@ -41,5 +40,9 @@ namespace TagsCloud
                 image.Save(options.OutputFile, ImageFormat.Png);
             }
         }
+    }
+
+    public class UnknownAlgorithmException : Exception
+    {
     }
 }

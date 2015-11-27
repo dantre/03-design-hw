@@ -10,7 +10,7 @@ namespace Tests
     public class BitmapMethods_Test
     {
         [Test]
-        public void Resize_from_pixel_to_square()
+        public void BitmapMethods_Resize_should_resize_pixel_to_square()
         {
             var image = new Bitmap(1,1);
 
@@ -20,7 +20,7 @@ namespace Tests
         }
 
         [Test]
-        public void CopyRegionIntoImage_copy_white_image_to_black_image()
+        public void BitmapMethods_CopyRegionIntoImage_should_copy_white_image_to_black_image()
         {
             var sourceImage = new Bitmap(20, 20);
             using (Graphics graphics = Graphics.FromImage(sourceImage))
@@ -39,9 +39,9 @@ namespace Tests
         }
 
         [Test]
-        public void CreateBitmapImage_creates_bitmap()
+        public void BitmapMethods_CreateBitmapImage_chould_create_bitmap()
         {
-            var result = BitmapMethods.CreateBitmapImage("some text", 20, new Options() {FontName = "Arial", TextColor = "Red", BackgroundColor = "Green"});
+            var result = BitmapMethods.CreateBitmapImage("some text", 20, new Options {FontName = "Arial", TextColor = "Red", BackgroundColor = "Green"});
 
             Assert.AreEqual(typeof(Bitmap), result.GetType());
         }

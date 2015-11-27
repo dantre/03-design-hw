@@ -21,7 +21,15 @@ namespace TagsCloud.Generators
             var filteredWords = Program.AppKernel.Get<IWordsFilter>().RemoveBadWords(words);
             var tuples = Program.AppKernel.Get<IFrequencyCounter>().GetWordsFrequencies(filteredWords);
             var fonts = Program.AppKernel.Get<IFontProcessor>().GetFonts(tuples, options);
-            var image = Program.AppKernel.Get<IAlgorithm>(options.AlgorithmName).GetBitmap(fonts, options);
+            Bitmap image;
+            try
+            {
+                image = Program.AppKernel.Get<IAlgorithm>(options.AlgorithmName).GetBitmap(fonts, options);
+            }
+            catch (ActivationException)
+            {
+                throw new UnknownAlgorithmException();
+            }
             return image;
         }
     }

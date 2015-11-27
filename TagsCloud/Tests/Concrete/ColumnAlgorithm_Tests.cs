@@ -18,11 +18,11 @@ namespace Tests.Concrete
         [SetUp]
         public void Init()
         {
-            fonts = new List<Tuple<string, int>>()
+            fonts = new List<Tuple<string, int>>
             {
                 Tuple.Create("a", 10)
             };
-            options = new Options()
+            options = new Options
             {
                 Width = 100,
                 Height = 100,
@@ -36,7 +36,7 @@ namespace Tests.Concrete
         }
 
         [Test]
-        public void GetBitmap_returns_bitmap()
+        public void ColumnsAlgorithm_GetBitmap_should_return_bitmap()
         {
             var result = algorithm.GetBitmap(fonts, options);
 
@@ -44,7 +44,7 @@ namespace Tests.Concrete
         }
 
         [Test]
-        public void GetBitmap_returns_bitmap_with_width_eq_100()
+        public void ColumnsAlgorithm_GetBitmap_should_return_bitmap_with_width_eq_100()
         {
             var result = algorithm.GetBitmap(fonts, options);
 
@@ -52,7 +52,7 @@ namespace Tests.Concrete
         }
 
         [Test]
-        public void GetBitmap_returns_bitmap_with_height_eq_100()
+        public void ColumnsAlgorithm_GetBitmap_should_return_bitmap_with_height_eq_100()
         {
             var result = algorithm.GetBitmap(fonts, options);
 
@@ -60,7 +60,7 @@ namespace Tests.Concrete
         }
 
         [Test]
-        public void GetBitmap_returns_first_pixel_in_background_color()
+        public void ColumnsAlgorithm_GetBitmap_should_return_first_pixel_in_background_color()
         {
             var result = algorithm.GetBitmap(fonts, options);
 
