@@ -8,7 +8,7 @@ namespace Tests
     public class WordsFromTextExtractor_Tests
     {
         [Test]
-        public void WordsFromTextExtractor_GetWords_on_text_with_punctuation_gives_words_without_punctuation()
+        public void GetWords_on_text_with_punctuation_gives_words_without_punctuation()
         {
             var wordsExtractor = new WordsFromTextExtractor();
             string data = @"A,B. CC, A ! D";
@@ -20,7 +20,7 @@ namespace Tests
         }
 
         [Test]
-        public void WordsFromTextExtractor_GetWords_on_text_4_words_gives_4_words()
+        public void GetWords_on_text_4_words_gives_4_words()
         {
             var wordsExtractor = new WordsFromTextExtractor();
             string data = @"A B A C";

@@ -66,12 +66,11 @@
     <Compile Include="Concrete\Algorithms\ColumnsAlgorithm.cs" />
     <Compile Include="Concrete\Algorithms\LineAlgorithm.cs" />
     <Compile Include="Concrete\FrequencyCounter.cs" />
-    <Compile Include="Concrete\WordsExtractors\WordsOnePerLineExtractorUnixStyle.cs" />
     <Compile Include="Concrete\WordsFilter.cs" />
     <Compile Include="Concrete\FontProcessor.cs" />
     <Compile Include="Concrete\TxtReader.cs" />
     <Compile Include="Concrete\WordsExtractors\WordsFromTextExtractor.cs" />
-    <Compile Include="Concrete\WordsExtractors\WordsOnePerLineExtractorWindowsStyle.cs" />
+    <Compile Include="Concrete\WordsExtractors\WordsOnePerLineExtractor.cs" />
     <Compile Include="ConsoleProgram.cs" />
     <Compile Include="Generators\TagsCloudGenerator.cs" />
     <Compile Include="NInject\BasicModule.cs" />

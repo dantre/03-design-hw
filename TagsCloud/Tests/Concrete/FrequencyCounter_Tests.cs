@@ -8,7 +8,7 @@ namespace Tests
     public class FrequencyCounter_Tests
     {
         [Test]
-        public void _GetWordFrequencies_on_array_with_repeats_should_give_right_counts()
+        public void GetWordFrequencies_on_array_with_repeats_should_give_right_counts()
         {
             var proc = new FrequencyCounter();
             var data = new[] {"a", "b", "c", "a", "a", "b"};

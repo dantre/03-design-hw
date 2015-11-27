@@ -36,7 +36,7 @@ namespace Tests.Concrete
         }
 
         [Test]
-        public void LineAlgorithm_GetBitmap_should_return_bitmap()
+        public void GetBitmap_should_return_bitmap()
         {
             var result = algorithm.GetBitmap(fonts, options);
 
@@ -44,7 +44,7 @@ namespace Tests.Concrete
         }
 
         [Test]
-        public void LineAlgorithm_GetBitmap_should_return_bitmap_with_width_eq_100()
+        public void GetBitmap_should_return_bitmap_with_width_eq_100()
         {
             var result = algorithm.GetBitmap(fonts, options);
 
@@ -52,7 +52,7 @@ namespace Tests.Concrete
         }
 
         [Test]
-        public void LineAlgorithm_GetBitmap_should_return_bitmap_with_height_eq_100()
+        public void GetBitmap_should_return_bitmap_with_height_eq_100()
         {
             var result = algorithm.GetBitmap(fonts, options);
 

@@ -7,7 +7,7 @@ namespace Tests
     public class WordsFilter_Tests
     {
         [Test]
-        public void WordsFilter_RemoveBadWords_should_remove_articles()
+        public void RemoveBadWords_should_remove_articles()
         {
             var modifier = new WordsFilter();
             var data = new[] {"A", "and", "B", "or", "C"};
@@ -19,7 +19,7 @@ namespace Tests
         }
 
         [Test]
-        public void WordsFilter_RemoveBadWords_shouldnot_remove_not_articles()
+        public void RemoveBadWords_shouldnot_remove_not_articles()
         {
             var modifier = new WordsFilter();
             var data = new[] { "A", "B", "C" };

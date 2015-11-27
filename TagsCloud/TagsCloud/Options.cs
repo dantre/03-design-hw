@@ -3,8 +3,6 @@ using CommandLine.Text;
 
 namespace TagsCloud
 {
-    // CR (krait): Хочется иметь возможность задавать алгоритм, по которому будет генериться картинка.
-
     public class Options
     {
         [Option('i', "input", Required = true, HelpText = "Input file.")]

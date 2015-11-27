@@ -4,13 +4,11 @@ using TagsCloud;
 
 namespace Tests
 {
-    // CR (krait): Название класса в названиях тестов лишнее: оно и так содержится в названии fixture.
-
     [TestFixture]
     public class BitmapMethods_Test
     {
         [Test]
-        public void BitmapMethods_Resize_should_resize_pixel_to_square()
+        public void Resize_should_resize_pixel_to_square()
         {
             var image = new Bitmap(1,1);
 
@@ -20,7 +18,7 @@ namespace Tests
         }
 
         [Test]
-        public void BitmapMethods_CopyRegionIntoImage_should_copy_white_image_to_black_image()
+        public void CopyRegionIntoImage_should_copy_white_image_to_black_image()
         {
             var sourceImage = new Bitmap(20, 20);
             using (Graphics graphics = Graphics.FromImage(sourceImage))
@@ -39,7 +37,7 @@ namespace Tests
         }
 
         [Test]
-        public void BitmapMethods_CreateBitmapImage_chould_create_bitmap()
+        public void CreateBitmapImage_chould_create_bitmap()
         {
             var result = BitmapMethods.CreateBitmapImage("some text", 20, new Options {FontName = "Arial", TextColor = "Red", BackgroundColor = "Green"});
 

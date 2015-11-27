@@ -8,6 +8,7 @@ using TagsCloud.Concrete;
 using TagsCloud.Concrete.Algorithms;
 using TagsCloud.Concrete.WordsExtractors;
 using TagsCloud.Generators;
+using TagsCloud.NInject;
 
 namespace Tests
 {
@@ -32,36 +33,30 @@ namespace Tests
                 OutputFile = "result.png",
                 AlgorithmName = "Column"
             };
-            Program.AppKernel = new StandardKernel();
+            Program.AppKernel = new StandardKernel(new BasicModule());
             var reader = Substitute.For<IFileReader>();
             reader.GetRawText("test").Returns("test text");
+            Program.AppKernel.Unbind<IFileReader>();
             Program.AppKernel.Bind<IFileReader>().ToConstant(reader);
-            // CR (krait): Надо сделать как-нибудь так, чтобы здесь задавались только биндинги, отличные от стандартных. То есть только Bind<IFileReader>().ToConstant(reader) в данном случае.
-            Program.AppKernel.Bind<IWordsExtractor>().To<WordsFromTextExtractor>();
-            Program.AppKernel.Bind<IWordsFilter>().To<WordsFilter>();
-            Program.AppKernel.Bind<IFrequencyCounter>().To<FrequencyCounter>();
-            Program.AppKernel.Bind<IFontProcessor>().To<FontProcessor>();
-            Program.AppKernel.Bind<IAlgorithm>().To<ColumnsAlgorithm>().Named("Column");
-            Program.AppKernel.Bind<IAlgorithm>().To<LineAlgorithm>().Named("Line");
             generator = new TagsCloudGenerator(options);
         }
 
         [Test]
-        public void TagsCloudGenerator_Generate_should_return_bitmap()
+        public void Generate_should_return_bitmap()
         {
             var bitmap = generator.Generate();
             Assert.AreEqual(typeof(Bitmap), bitmap.GetType());
         }
 
         [Test]
-        public void TagsCloudGenerator_Generate_should_return_bitmap_with_height_100()
+        public void  Generate_should_return_bitmap_with_height_100()
         {
             var bitmap = generator.Generate();
             Assert.AreEqual(100, bitmap.Height);
         }
 
         [Test]
-        public void TagsCloudGenerator_Generate_should_return_bitmap_with_first_pixel_red()
+        public void Generate_should_return_bitmap_with_first_pixel_red()
         {
             var bitmap = generator.Generate();
             Assert.AreEqual(Color.FromArgb(255, 255, 0, 0), bitmap.GetPixel(0, 0));

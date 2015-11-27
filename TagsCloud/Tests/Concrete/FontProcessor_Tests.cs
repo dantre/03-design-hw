@@ -10,7 +10,7 @@ namespace Tests
     public class FontProcessor_Tests
     {
         [Test]
-        public void FontProcessor_GetFonts_on_different_freqs_should_give_different_fonts()
+        public void GetFonts_on_different_freqs_should_give_different_fonts()
         {
             var proc = new FontProcessor();
             var data = new[]
