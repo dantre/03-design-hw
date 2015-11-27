@@ -6,18 +6,17 @@ namespace TagsCloud.Generators
 {
     public class TagsCloudGenerator
     {
-        private readonly string filename;
+        
         private readonly Options options;
 
-        public TagsCloudGenerator(string filename, Options options)
+        public TagsCloudGenerator(Options options)
         {
-            this.filename = filename;
             this.options = options;
         }
 
-        public Image Generate()
+        public Bitmap Generate()
         {
-            var text = Program.AppKernel.Get<IFilerReader>().GetRawText(filename);
+            var text = Program.AppKernel.Get<IFileReader>().GetRawText(options.InputFile);
             var words = Program.AppKernel.Get<IWordsExtractor>().GetWords(text);
             var filteredWords = Program.AppKernel.Get<IWordsFilter>().RemoveBadWords(words);
             var tuples = Program.AppKernel.Get<IFrequencyCounter>().GetWordsFrequencies(filteredWords);

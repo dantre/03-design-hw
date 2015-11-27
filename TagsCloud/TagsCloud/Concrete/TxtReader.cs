@@ -3,7 +3,7 @@ using TagsCloud.Abstract;
 
 namespace TagsCloud.Concrete
 {
-    public class TxtReader : IFilerReader
+    public class TxtReader : IFileReader
     {
         public string GetRawText(string filename)
         {

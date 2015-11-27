@@ -25,7 +25,7 @@ namespace TagsCloud
                     Console.WriteLine("File not found.");
                     return;
                 }
-                var generator = new TagsCloudGenerator(options.InputFile, options);
+                var generator = new TagsCloudGenerator(options);
                 Image image;
                 try
                 {

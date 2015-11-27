@@ -1,6 +1,6 @@
 ﻿namespace TagsCloud.Abstract
 {
-    public interface IFilerReader
+    public interface IFileReader
     {
         string GetRawText(string filename);
     }

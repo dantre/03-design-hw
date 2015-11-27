@@ -6,7 +6,7 @@ using TagsCloud.Abstract;
 
 namespace TagsCloud.Concrete.Algorithms
 {
-    class LineAlgorithm : IAlgorithm
+    public class LineAlgorithm : IAlgorithm
     {
         public Bitmap GetBitmap(IEnumerable<Tuple<string, int>> fonts, Options options)
         {

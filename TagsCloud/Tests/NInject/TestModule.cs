@@ -1,16 +1,22 @@
-﻿using Ninject.Modules;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Moq;
+using Ninject.Modules;
 using TagsCloud.Abstract;
 using TagsCloud.Concrete;
 using TagsCloud.Concrete.Algorithms;
 using TagsCloud.Concrete.WordsExtractors;
 
-namespace TagsCloud.NInject
+namespace Tests.NInject
 {
-    public class BasicModule : NinjectModule
+    class TestModule : NinjectModule
     {
         public override void Load()
         {
-            Bind<IFileReader>().To<TxtReader>();
+            Bind<IFileReader>().To<FakeReader>();
             Bind<IWordsExtractor>().To<WordsFromTextExtractor>();
             Bind<IWordsFilter>().To<WordsFilter>();
             Bind<IFrequencyCounter>().To<FrequencyCounter>();
