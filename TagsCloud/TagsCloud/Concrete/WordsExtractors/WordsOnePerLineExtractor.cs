@@ -8,6 +8,7 @@ namespace TagsCloud.Concrete.WordsExtractors
     {
         public IEnumerable<string> GetWords(string rawText)
         {
+            // CR (krait): А что если файл в Unix-стиле и строки резделены только \n?
             return rawText.Split(new[] { @"\r\n" }, StringSplitOptions.RemoveEmptyEntries);
         }
     }

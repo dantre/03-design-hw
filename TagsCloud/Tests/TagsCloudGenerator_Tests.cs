@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Drawing;
 using Ninject;
-using NUnit.Framework.Internal;
 using TagsCloud;
 using TagsCloud.Generators;
-using TagsCloud.NInject;
 using NUnit.Framework;
 using Tests.NInject;
 
@@ -17,6 +10,7 @@ namespace Tests
     [TestFixture]
     class TagsCloudGenerator_Tests
     {
+        // CR (krait): Зачем поля публичные? Относится ко всем тестам.
         public Options options;
         public TagsCloudGenerator generator;
         [SetUp]
@@ -57,6 +51,7 @@ namespace Tests
         public void Generate_returns_bitmap_with_first_pixel_green()
         {
             var bitmap = generator.Generate();
+            // CR (krait): Это не green :)
             Assert.AreEqual(Color.FromArgb(255, 255, 0, 0), bitmap.GetPixel(0, 0));
         }
     }

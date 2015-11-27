@@ -64,7 +64,7 @@ namespace Tests.Concrete
         {
             var result = algorithm.GetBitmap(fonts, options);
 
-            Assert.AreEqual(Color.FromArgb(255,255,0,0), result.GetPixel(0,0));
+            Assert.AreEqual(Color.FromArgb(255, 255, 0, 0), result.GetPixel(0, 0));
         }
     }
 }

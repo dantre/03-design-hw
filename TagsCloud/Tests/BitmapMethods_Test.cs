@@ -4,6 +4,8 @@ using TagsCloud;
 
 namespace Tests
 {
+    // CR (krait): Говоря про возврат к старой схеме именования, я имел в виду формат <Method>_should_<do_something>. Сейчас названия не очень понятные.
+
     [TestFixture]
     public class BitmapMethods_Test
     {

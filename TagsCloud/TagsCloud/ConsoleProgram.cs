@@ -31,7 +31,9 @@ namespace TagsCloud
                 {
                     image = generator.Generate();
                 }
-                catch (ActivationException)
+                // CR (krait): Эта логика должна быть внутри генератора. Причем обернут должен быть только один вызов Get, потому что если вдруг всплывёт какой-то косяк с другими регистрациями, эксепшн не должен пойматься.
+                // CR (krait): Но сообщение должно печататься здесь. Можно пробрасывать сюда новый, специальный эксепшн или возвращать ошибку.
+                catch (ActivationException) 
                 {
                     Console.WriteLine("Unknown algorithm");
                     return;

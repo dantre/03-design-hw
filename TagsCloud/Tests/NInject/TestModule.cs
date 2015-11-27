@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Moq;
-using Ninject.Modules;
+﻿using Ninject.Modules;
 using TagsCloud.Abstract;
 using TagsCloud.Concrete;
 using TagsCloud.Concrete.Algorithms;
@@ -16,6 +10,8 @@ namespace Tests.NInject
     {
         public override void Load()
         {
+            // CR (krait): Можно не создавать отдельный модуль, а биндить ридер отдельно в тестах, где это нужно.
+            // CR (krait): Ещё, вместо FakeReader'а можно создавать реализацию на ходу, используя какой-нибудь mock-фреймворк типа NSubstitute.
             Bind<IFileReader>().To<FakeReader>();
             Bind<IWordsExtractor>().To<WordsFromTextExtractor>();
             Bind<IWordsFilter>().To<WordsFilter>();
