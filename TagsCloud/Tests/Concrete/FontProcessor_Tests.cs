@@ -19,7 +19,7 @@ namespace Tests
                 Tuple.Create("B", 5),
                 Tuple.Create("C", 1)
             };
-            var settings = new Options {MinFont = 10, MaxFont = 20};
+            var settings = new InputOptions {MinFont = 10, MaxFont = 20};
             var expected = new[]
             {
                 Tuple.Create("A", 20),
