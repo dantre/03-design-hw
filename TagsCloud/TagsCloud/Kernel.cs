@@ -9,7 +9,7 @@ namespace TagsCloud
 {
     public class Kernel
     {
-        public readonly Func<string, string> ReadText;
+        public Func<string, string> ReadText;
         public readonly Func<string, IEnumerable<string>> ExtractWords;
         public readonly Func<IEnumerable<string>, IEnumerable<string>> FiterWords;
         public readonly Func<IEnumerable<string>, Tuple<string, int>[]> CountFrequencies;

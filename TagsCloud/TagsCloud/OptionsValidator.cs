@@ -22,6 +22,16 @@ namespace TagsCloud
                 message = "Width too little";
                 return false;
             }
+            if (inputOptions.Height > 2048)
+            {
+                message = "Height too big";
+                return false;
+            }
+            if (inputOptions.Width > 2048)
+            {
+                message = "Width too big";
+                return false;
+            }
             if (inputOptions.MaxFont < inputOptions.MinFont)
             {
                 message = "Max font must be greater then Min font";
