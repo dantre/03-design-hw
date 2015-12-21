@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using TagsCloud.Abstract;
 
 namespace TagsCloud.Concrete
 {
-    public class FrequencyCounter: IFrequencyCounter
+    public class FrequencyCounter
     {
-        public Tuple<string, int>[] GetWordsFrequencies(IEnumerable<string> words)
+        public static Tuple<string, int>[] GetWordsFrequencies(IEnumerable<string> words)
         {
             return words.Select(w => w.ToLower())
                 .GroupBy(w => w)

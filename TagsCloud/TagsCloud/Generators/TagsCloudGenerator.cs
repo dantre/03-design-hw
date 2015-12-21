@@ -6,24 +6,24 @@ namespace TagsCloud.Generators
     public class TagsCloudGenerator
     {
         
-        private readonly Options options;
+        private readonly InputOptions _inputOptions;
 
-        public TagsCloudGenerator(Options options)
+        public TagsCloudGenerator(InputOptions _inputOptions)
         {
-            this.options = options;
+            this._inputOptions = _inputOptions;
         }
 
         public Bitmap Generate()
         {
-            var text = Program.AppKernel.Get<IFileReader>().GetRawText(options.InputFile);
+            var text = Program.AppKernel.Get<IFileReader>().GetRawText(_inputOptions.InputFile);
             var words = Program.AppKernel.Get<IWordsExtractor>().GetWords(text);
             var filteredWords = Program.AppKernel.Get<IWordsFilter>().RemoveBadWords(words);
             var tuples = Program.AppKernel.Get<IFrequencyCounter>().GetWordsFrequencies(filteredWords);
-            var fonts = Program.AppKernel.Get<IFontProcessor>().GetFonts(tuples, options);
+            var fonts = Program.AppKernel.Get<IFontProcessor>().GetFonts(tuples, _inputOptions);
             Bitmap image;
             try
             {
-                image = Program.AppKernel.Get<IAlgorithm>(options.AlgorithmName).GetBitmap(fonts, options);
+                image = Program.AppKernel.Get<IAlgorithm>(_inputOptions.AlgorithmName).GetBitmap(fonts, _inputOptions);
             }
             catch (ActivationException)
             {
