@@ -1,6 +1,5 @@
 ﻿using System.Drawing;
 using Ninject;
-using TagsCloud.Abstract;
 
 namespace TagsCloud.Generators
 {
