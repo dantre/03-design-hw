@@ -31,8 +31,9 @@ namespace Tests
                 OutputFile = "result.png",
                 AlgorithmName = "Column"
             };
-
-            kernel = new Kernel {ReadText = FakeReader};
+            
+            kernel = new Kernel();
+            kernel.ReadText = new Func<string, string>(FakeReader);
             generator = new TagsCloudGenerator(inputOptions, kernel);
         }
 
@@ -57,7 +58,7 @@ namespace Tests
             Assert.AreEqual(Color.FromArgb(255, 255, 0, 0), bitmap.GetPixel(0, 0));
         }
 
-        private string FakeReader(string filename)
+        public string FakeReader(string filename)
         {
             return "A B C D";
         }
