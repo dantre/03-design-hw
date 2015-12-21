@@ -11,8 +11,8 @@ namespace TagsCloud.Concrete.Algorithms
         {
             var textImages = BitmapMethods.GetTextImages(fonts, _inputOptions).ToList();
             int maxHeight = textImages.Max(i => i.Height);
-            int sumWidth = textImages.Sum(i => i.Width);
-            var resultImage = new Bitmap( sumWidth, maxHeight);
+            var resultImage = new Bitmap(textImages.Sum(i => i.Width), maxHeight);
+
             var objGraphics = Graphics.FromImage(resultImage);
             objGraphics.Clear(Color.FromName(_inputOptions.BackgroundColor));
             objGraphics.Flush();

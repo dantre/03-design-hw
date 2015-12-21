@@ -56,12 +56,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Abstract\IAlgorithm.cs" />
-    <Compile Include="Abstract\IFileReader.cs" />
-    <Compile Include="Abstract\IFrequencyCounter.cs" />
-    <Compile Include="Abstract\IFontProcessor.cs" />
-    <Compile Include="Abstract\IWordsExtractor.cs" />
-    <Compile Include="Abstract\IWordsFilter.cs" />
     <Compile Include="BitmapMethods.cs" />
     <Compile Include="Concrete\Algorithms\ColumnsAlgorithm.cs" />
     <Compile Include="Concrete\Algorithms\LineAlgorithm.cs" />
@@ -73,8 +67,9 @@
     <Compile Include="Concrete\WordsExtractors\WordsOnePerLineExtractor.cs" />
     <Compile Include="ConsoleProgram.cs" />
     <Compile Include="Generators\TagsCloudGenerator.cs" />
-    <Compile Include="NInject\BasicModule.cs" />
-    <Compile Include="Options.cs" />
+    <Compile Include="Kernel.cs" />
+    <Compile Include="InputOptions.cs" />
+    <Compile Include="OptionsValidator.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

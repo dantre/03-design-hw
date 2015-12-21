@@ -9,8 +9,8 @@ namespace TagsCloud
 {
     public class ConsoleProgram
     {
-        private string[] args;
-        private InputOptions inputOptions;
+        private readonly string[] args;
+        private readonly InputOptions inputOptions;
         private Kernel kernel;
 
         public ConsoleProgram(string[] args)
@@ -23,7 +23,6 @@ namespace TagsCloud
         public void Run()
         {
             if (!Parser.Default.ParseArguments(args, inputOptions)) return;
-
             string errorMessage;
             if (!OptionsValidator.IsValid(inputOptions, out errorMessage))
             {

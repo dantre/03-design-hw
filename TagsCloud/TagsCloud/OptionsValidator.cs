@@ -3,7 +3,7 @@ using TagsCloud.Concrete.Algorithms;
 
 namespace TagsCloud
 {
-    public class OptionsValidator
+    public static class OptionsValidator
     {
         public static bool IsValid(InputOptions inputOptions, out string message)
         {
@@ -40,7 +40,7 @@ namespace TagsCloud
         {
             if (inputOptions.AlgorithmName == "Line")
             {
-                kernel.getBitmap = LineAlgorithm.GetBitmap;
+                kernel.GetBitmap = LineAlgorithm.GetBitmap;
                 return kernel;
             }
             return kernel;

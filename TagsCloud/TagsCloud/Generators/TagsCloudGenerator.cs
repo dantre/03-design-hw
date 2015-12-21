@@ -19,12 +19,12 @@ namespace TagsCloud.Generators
 
         public Bitmap Generate()
         {
-            return kernel.getBitmap(
-                kernel.countFonts(
-                    kernel.countFrequencies(
-                        kernel.fiterWords(
-                            kernel.extractWords(
-                                kernel.readText(inputOptions.InputFile)))),
+            return kernel.GetBitmap(
+                kernel.CountFonts(
+                    kernel.CountFrequencies(
+                        kernel.FiterWords(
+                            kernel.ExtractWords(
+                                kernel.ReadText(inputOptions.InputFile)))),
                     inputOptions),
                 inputOptions);
         }

@@ -71,7 +71,6 @@ namespace TagsCloud
                     graphics.DrawImage(image, destRect, 0, 0, image.Width, image.Height, GraphicsUnit.Pixel, wrapMode);
                 }
             }
-
             return destImage;
         }
     }

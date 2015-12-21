@@ -7,23 +7,23 @@ using TagsCloud.Concrete.WordsExtractors;
 
 namespace TagsCloud
 {
-    class Kernel
+    public class Kernel
     {
-        public Func<string, string> readText;
-        public Func<string, IEnumerable<string>> extractWords;
-        public Func<IEnumerable<string>, IEnumerable<string>> fiterWords;
-        public Func<IEnumerable<string>, Tuple<string, int>[]> countFrequencies;
-        public Func<Tuple<string, int>[], InputOptions, IEnumerable<Tuple<string, int>>> countFonts;
-        public Func<IEnumerable<Tuple<string, int>>, InputOptions, Bitmap> getBitmap;
+        public readonly Func<string, string> ReadText;
+        public readonly Func<string, IEnumerable<string>> ExtractWords;
+        public readonly Func<IEnumerable<string>, IEnumerable<string>> FiterWords;
+        public readonly Func<IEnumerable<string>, Tuple<string, int>[]> CountFrequencies;
+        public readonly Func<Tuple<string, int>[], InputOptions, IEnumerable<Tuple<string, int>>> CountFonts;
+        public Func<IEnumerable<Tuple<string, int>>, InputOptions, Bitmap> GetBitmap;
 
         public Kernel()
         {
-            readText = TxtReader.GetRawText;
-            extractWords = WordsFromTextExtractor.GetWords;
-            fiterWords = WordsFilter.RemoveBadWords;
-            countFrequencies = FrequencyCounter.GetWordsFrequencies;
-            countFonts = FontProcessor.GetFonts;
-            getBitmap = ColumnsAlgorithm.GetBitmap;
+            ReadText = TxtReader.GetRawText;
+            ExtractWords = WordsFromTextExtractor.GetWords;
+            FiterWords = WordsFilter.RemoveBadWords;
+            CountFrequencies = FrequencyCounter.GetWordsFrequencies;
+            CountFonts = FontProcessor.GetFonts;
+            GetBitmap = ColumnsAlgorithm.GetBitmap;
         }
     }
 }
