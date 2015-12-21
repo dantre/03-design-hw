@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using TagsCloud.Abstract;
 
 namespace TagsCloud.Concrete.WordsExtractors
 {
-    public class WordsOnePerLineExtractor : IWordsExtractor
+    public class WordsOnePerLineExtractor
     {
         public IEnumerable<string> GetWords(string rawText)
         {
