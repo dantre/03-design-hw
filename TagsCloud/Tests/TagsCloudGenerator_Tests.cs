@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 using Ninject;
 using NSubstitute;
 using NUnit.Framework;
@@ -10,12 +11,14 @@ namespace Tests
     [TestFixture]
     class TagsCloudGenerator_Tests
     {
-        private InputOptions _inputOptions;
+        private InputOptions inputOptions;
         private TagsCloudGenerator generator;
+        private Kernel kernel;
+
         [SetUp]
         public void Init()
         {
-            _inputOptions = new InputOptions
+            inputOptions = new InputOptions
             {
                 Width = 100,
                 Height = 100,
@@ -28,16 +31,13 @@ namespace Tests
                 OutputFile = "result.png",
                 AlgorithmName = "Column"
             };
-            Program.AppKernel = new StandardKernel(new BasicModule());
-            var reader = Substitute.For<IFileReader>();
-            reader.GetRawText("test").Returns("test text");
-            Program.AppKernel.Unbind<IFileReader>();
-            Program.AppKernel.Bind<IFileReader>().ToConstant(reader);
-            generator = new TagsCloudGenerator(_inputOptions);
+
+            kernel = new Kernel {ReadText = FakeReader};
+            generator = new TagsCloudGenerator(inputOptions, kernel);
         }
 
         [Test]
-        public void Generate_should_return_bitmap()
+        public void Generate_should_return_something()
         {
             var bitmap = generator.Generate();
             Assert.AreEqual(typeof(Bitmap), bitmap.GetType());
@@ -55,6 +55,11 @@ namespace Tests
         {
             var bitmap = generator.Generate();
             Assert.AreEqual(Color.FromArgb(255, 255, 0, 0), bitmap.GetPixel(0, 0));
+        }
+
+        private string FakeReader(string filename)
+        {
+            return "A B C D";
         }
     }
 }

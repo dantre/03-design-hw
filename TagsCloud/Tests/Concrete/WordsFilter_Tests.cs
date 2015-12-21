@@ -9,11 +9,10 @@ namespace Tests
         [Test]
         public void RemoveBadWords_should_remove_articles()
         {
-            var modifier = new WordsFilter();
             var data = new[] {"A", "and", "B", "or", "C"};
             var expected = new[] {"A", "B", "C"};
 
-            var result = modifier.RemoveBadWords(data);
+            var result = WordsFilter.RemoveBadWords(data);
 
             Assert.AreEqual(expected, result);
         }
@@ -21,11 +20,10 @@ namespace Tests
         [Test]
         public void RemoveBadWords_shouldnot_remove_not_articles()
         {
-            var modifier = new WordsFilter();
             var data = new[] { "A", "B", "C" };
             var expected = new[] { "A", "B", "C" };
 
-            var result = modifier.RemoveBadWords(data);
+            var result = WordsFilter.RemoveBadWords(data);
 
             Assert.AreEqual(expected, result);
         }

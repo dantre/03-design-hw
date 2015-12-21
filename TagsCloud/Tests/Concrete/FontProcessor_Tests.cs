@@ -12,7 +12,6 @@ namespace Tests
         [Test]
         public void GetFonts_on_different_freqs_should_give_different_fonts()
         {
-            var proc = new FontProcessor();
             var data = new[]
             {
                 Tuple.Create("A", 12),
@@ -27,7 +26,7 @@ namespace Tests
                 Tuple.Create("C", 10)
             };
 
-            var result = proc.GetFonts(data, settings).ToList();
+            var result = FontProcessor.GetFonts(data, settings).ToList();
 
             CollectionAssert.AreEqual(expected, result);
         }

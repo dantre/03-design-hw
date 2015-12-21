@@ -10,7 +10,6 @@ namespace Tests
         [Test]
         public void GetWordFrequencies_on_array_with_repeats_should_give_right_counts()
         {
-            var proc = new FrequencyCounter();
             var data = new[] {"a", "b", "c", "a", "a", "b"};
             var expected = new[]
             {
@@ -19,7 +18,7 @@ namespace Tests
                 Tuple.Create("c", 1)
             };
 
-            var result = proc.GetWordsFrequencies(data);
+            var result = FrequencyCounter.GetWordsFrequencies(data);
 
             Assert.AreEqual(expected, result);
         }

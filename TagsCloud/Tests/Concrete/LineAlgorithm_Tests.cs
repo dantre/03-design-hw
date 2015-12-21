@@ -12,7 +12,7 @@ namespace Tests.Concrete
     {
         public List<Tuple<string, int>> fonts;
         public InputOptions _inputOptions;
-        public IAlgorithm algorithm;
+        public Func<IEnumerable<Tuple<string, int>>, InputOptions, Bitmap> GetBitmap;
 
         [SetUp]
         public void Init()
@@ -31,13 +31,13 @@ namespace Tests.Concrete
                 BackgroundColor = "Red",
                 TextColor = "Yellow"
             };
-            algorithm = new LineAlgorithm();
+            GetBitmap = LineAlgorithm.GetBitmap;
         }
 
         [Test]
         public void GetBitmap_should_return_bitmap()
         {
-            var result = algorithm.GetBitmap(fonts, _inputOptions);
+            var result = GetBitmap(fonts, _inputOptions);
 
             Assert.AreEqual(typeof(Bitmap), result.GetType());
         }
@@ -45,7 +45,7 @@ namespace Tests.Concrete
         [Test]
         public void GetBitmap_should_return_bitmap_with_width_eq_100()
         {
-            var result = algorithm.GetBitmap(fonts, _inputOptions);
+            var result = GetBitmap(fonts, _inputOptions);
 
             Assert.AreEqual(result.Width, 100);
         }
@@ -53,7 +53,7 @@ namespace Tests.Concrete
         [Test]
         public void GetBitmap_should_return_bitmap_with_height_eq_100()
         {
-            var result = algorithm.GetBitmap(fonts, _inputOptions);
+            var result = GetBitmap(fonts, _inputOptions);
 
             Assert.AreEqual(result.Height, 100);
         }
@@ -61,7 +61,7 @@ namespace Tests.Concrete
         [Test]
         public void GetBitmap_returns_first_pixel_in_background_color()
         {
-            var result = algorithm.GetBitmap(fonts, _inputOptions);
+            var result = GetBitmap(fonts, _inputOptions);
 
             Assert.AreEqual(Color.FromArgb(255, 255, 0, 0), result.GetPixel(0, 0));
         }
