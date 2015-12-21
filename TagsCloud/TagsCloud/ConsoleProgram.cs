@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Drawing;
 using System.Drawing.Imaging;
-using System.IO;
+using System.Net.Http;
 using CommandLine;
-using Ninject;
 using TagsCloud.Generators;
 
 namespace TagsCloud
@@ -11,38 +10,30 @@ namespace TagsCloud
     public class ConsoleProgram
     {
         private string[] args;
+        private InputOptions inputOptions;
+        private Kernel kernel;
+
         public ConsoleProgram(string[] args)
         {
             this.args = args;
+            inputOptions = new InputOptions();
+            kernel = new Kernel();
         }
 
         public void Run()
         {
-            var options = new Options();
-            if (Parser.Default.ParseArguments(args, options))
-            {
-                if (!File.Exists(options.InputFile))
-                {
-                    Console.WriteLine("File not found.");
-                    return;
-                }
-                var generator = new TagsCloudGenerator(options);
-                Image image;
-                try
-                {
-                    image = generator.Generate();
-                }
-                catch (UnknownAlgorithmException) 
-                {
-                    Console.WriteLine("Unknown algorithm");
-                    return;
-                }
-                image.Save(options.OutputFile, ImageFormat.Png);
-            }
-        }
-    }
+            if (!Parser.Default.ParseArguments(args, inputOptions)) return;
 
-    public class UnknownAlgorithmException : Exception
-    {
+            string errorMessage;
+            if (!OptionsValidator.IsValid(inputOptions, out errorMessage))
+            {
+                Console.WriteLine(errorMessage);
+                return;
+            }
+            kernel = OptionsValidator.UpdateAlgoInKernel(inputOptions, kernel);
+
+            Image image = new TagsCloudGenerator(inputOptions, kernel).Generate();
+            image.Save(inputOptions.OutputFile, ImageFormat.Png);
+        }
     }
 }

@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TagsCloud.Concrete;
 using TagsCloud.Concrete.Algorithms;
 using TagsCloud.Concrete.WordsExtractors;

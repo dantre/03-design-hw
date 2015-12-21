@@ -2,15 +2,14 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
-using TagsCloud.Abstract;
 
 namespace TagsCloud.Concrete.Algorithms
 {
-    public class ColumnsAlgorithm : IAlgorithm
+    public class ColumnsAlgorithm 
     {
-        public Bitmap GetBitmap(IEnumerable<Tuple<string, int>> fonts, Options options)
+        public static Bitmap GetBitmap(IEnumerable<Tuple<string, int>> fonts, InputOptions _inputOptions)
         {
-            var textImages = BitmapMethods.GetTextImages(fonts, options).ToList();
+            var textImages = BitmapMethods.GetTextImages(fonts, _inputOptions).ToList();
             int maxHeight = textImages.Max(i => i.Height);
             int sumWidth = textImages.Sum(i => i.Width);
 
@@ -19,7 +18,7 @@ namespace TagsCloud.Concrete.Algorithms
 
             var resultImage = new Bitmap(lineWidth + 100, maxHeight * countLines);
             var objGraphics = Graphics.FromImage(resultImage);
-            objGraphics.Clear(Color.FromName(options.BackgroundColor));
+            objGraphics.Clear(Color.FromName(_inputOptions.BackgroundColor));
             objGraphics.Flush();
 
             int x = 0;
@@ -36,7 +35,7 @@ namespace TagsCloud.Concrete.Algorithms
                 }
             }
 
-            return BitmapMethods.ResizeImage(resultImage, options.Width, options.Height);
+            return BitmapMethods.ResizeImage(resultImage, _inputOptions.Width, _inputOptions.Height);
         }
     }
 }

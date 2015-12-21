@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Drawing;
 using NUnit.Framework;
 using TagsCloud;
-using TagsCloud.Abstract;
 using TagsCloud.Concrete.Algorithms;
 
 namespace Tests.Concrete
@@ -12,7 +11,7 @@ namespace Tests.Concrete
     class ColumnsAlgorithm_Tests
     {
         public List<Tuple<string, int>> fonts;
-        public Options options;
+        public InputOptions _inputOptions;
         public IAlgorithm algorithm;
 
         [SetUp]
@@ -22,7 +21,7 @@ namespace Tests.Concrete
             {
                 Tuple.Create("a", 10)
             };
-            options = new Options
+            _inputOptions = new InputOptions
             {
                 Width = 100,
                 Height = 100,
@@ -38,7 +37,7 @@ namespace Tests.Concrete
         [Test]
         public void GetBitmap_should_return_bitmap()
         {
-            var result = algorithm.GetBitmap(fonts, options);
+            var result = algorithm.GetBitmap(fonts, _inputOptions);
 
             Assert.AreEqual(typeof(Bitmap), result.GetType());
         }
@@ -46,7 +45,7 @@ namespace Tests.Concrete
         [Test]
         public void GetBitmap_should_return_bitmap_with_width_eq_100()
         {
-            var result = algorithm.GetBitmap(fonts, options);
+            var result = algorithm.GetBitmap(fonts, _inputOptions);
 
             Assert.AreEqual(result.Width, 100);
         }
@@ -54,7 +53,7 @@ namespace Tests.Concrete
         [Test]
         public void GetBitmap_should_return_bitmap_with_height_eq_100()
         {
-            var result = algorithm.GetBitmap(fonts, options);
+            var result = algorithm.GetBitmap(fonts, _inputOptions);
 
             Assert.AreEqual(result.Height, 100);
         }
@@ -62,7 +61,7 @@ namespace Tests.Concrete
         [Test]
         public void ColumnsAlgorithm_GetBitmap_should_return_first_pixel_in_background_color()
         {
-            var result = algorithm.GetBitmap(fonts, options);
+            var result = algorithm.GetBitmap(fonts, _inputOptions);
 
             Assert.AreEqual(Color.FromArgb(255, 255, 0, 0), result.GetPixel(0, 0));
         }

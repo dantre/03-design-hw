@@ -3,24 +3,19 @@ using Ninject;
 using NSubstitute;
 using NUnit.Framework;
 using TagsCloud;
-using TagsCloud.Abstract;
-using TagsCloud.Concrete;
-using TagsCloud.Concrete.Algorithms;
-using TagsCloud.Concrete.WordsExtractors;
 using TagsCloud.Generators;
-using TagsCloud.NInject;
 
 namespace Tests
 {
     [TestFixture]
     class TagsCloudGenerator_Tests
     {
-        private Options options;
+        private InputOptions _inputOptions;
         private TagsCloudGenerator generator;
         [SetUp]
         public void Init()
         {
-            options = new Options
+            _inputOptions = new InputOptions
             {
                 Width = 100,
                 Height = 100,
@@ -38,7 +33,7 @@ namespace Tests
             reader.GetRawText("test").Returns("test text");
             Program.AppKernel.Unbind<IFileReader>();
             Program.AppKernel.Bind<IFileReader>().ToConstant(reader);
-            generator = new TagsCloudGenerator(options);
+            generator = new TagsCloudGenerator(_inputOptions);
         }
 
         [Test]

@@ -1,7 +1,4 @@
-﻿using Ninject;
-using TagsCloud.NInject;
-
-namespace TagsCloud
+﻿namespace TagsCloud
 {
     public static class Program
     {

@@ -10,19 +10,19 @@ namespace TagsCloud
 {
     public static class BitmapMethods
     {
-        public static IEnumerable<Bitmap> GetTextImages(IEnumerable<Tuple<string, int>> fonts, Options options)
+        public static IEnumerable<Bitmap> GetTextImages(IEnumerable<Tuple<string, int>> fonts, InputOptions inputOptions)
         {
             var mixedFonts = fonts.OrderBy(e => Guid.NewGuid());
-            return mixedFonts.Select(tuple => CreateBitmapImage(tuple.Item1, tuple.Item2, options));
+            return mixedFonts.Select(tuple => CreateBitmapImage(tuple.Item1, tuple.Item2, inputOptions));
         }
 
-        public static Bitmap CreateBitmapImage(string text, int size, Options options)
+        public static Bitmap CreateBitmapImage(string text, int size, InputOptions inputOptions)
         {
             Bitmap objBmpImage = new Bitmap(1, 1);
             int intWidth = 0;
             int intHeight = 0;
 
-            Font objFont = new Font(options.FontName, size, FontStyle.Bold, GraphicsUnit.Pixel);
+            Font objFont = new Font(inputOptions.FontName, size, FontStyle.Bold, GraphicsUnit.Pixel);
             Graphics objGraphics = Graphics.FromImage(objBmpImage);
 
             intWidth = (int)objGraphics.MeasureString(text, objFont).Width;
@@ -32,10 +32,10 @@ namespace TagsCloud
 
             objGraphics = Graphics.FromImage(objBmpImage);
 
-            objGraphics.Clear(Color.FromName(options.BackgroundColor));
+            objGraphics.Clear(Color.FromName(inputOptions.BackgroundColor));
             objGraphics.SmoothingMode = SmoothingMode.AntiAlias;
             objGraphics.TextRenderingHint = TextRenderingHint.AntiAlias;
-            objGraphics.DrawString(text, objFont, new SolidBrush(Color.FromName(options.TextColor)), 0, 0);
+            objGraphics.DrawString(text, objFont, new SolidBrush(Color.FromName(inputOptions.TextColor)), 0, 0);
             objGraphics.Flush();
 
             return (objBmpImage);
