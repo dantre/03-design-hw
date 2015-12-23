@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace TagsCloud.Concrete.Algorithms
 {
-    public class LineAlgorithm 
+    public class LineAlgorithm
     {
         public static Bitmap GetBitmap(IEnumerable<Tuple<string, int>> fonts, InputOptions _inputOptions)
         {

@@ -22,7 +22,7 @@ namespace TagsCloud.Generators
             return kernel.GetBitmap(
                 kernel.CountFonts(
                     kernel.CountFrequencies(
-                        kernel.FiterWords(
+                        kernel.FilterWords(
                             kernel.ExtractWords(
                                 kernel.ReadText(inputOptions.InputFile)))),
                     inputOptions),

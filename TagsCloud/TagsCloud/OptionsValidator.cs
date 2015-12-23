@@ -7,6 +7,7 @@ namespace TagsCloud
     {
         public static bool IsValid(InputOptions inputOptions, out string message)
         {
+            // CR (krait): Эту портянку не помешало бы как-то разбить и избавить от дублирования. Если число параметров увеличится, здесь будет полный треш.
             if (!File.Exists(inputOptions.InputFile))
             {
                 message = "File not found.";
@@ -37,6 +38,7 @@ namespace TagsCloud
                 message = "Max font must be greater then Min font";
                 return false;
             }
+            // CR (krait): При появлении нового алгоритма придется сделать много работы: добавить его сюда, в текст хелпа и в UpdateAlgoInKernel. Кажется, этого можно было легко избежать. 
             if (inputOptions.AlgorithmName != "Line" && inputOptions.AlgorithmName != "Column")
             {
                 message = "Unknown algorithm";

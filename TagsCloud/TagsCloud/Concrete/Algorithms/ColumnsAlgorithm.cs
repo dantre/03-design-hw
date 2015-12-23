@@ -7,6 +7,7 @@ namespace TagsCloud.Concrete.Algorithms
 {
     public class ColumnsAlgorithm 
     {
+        // CR (krait): Зачем в имени _inputOptions подчеркивание? Чем этот параметр особенный? 
         public static Bitmap GetBitmap(IEnumerable<Tuple<string, int>> fonts, InputOptions _inputOptions)
         {
             var textImages = BitmapMethods.GetTextImages(fonts, _inputOptions).ToList();
