@@ -6,7 +6,7 @@ namespace TagsCloud.Concrete
 {
     public class FrequencyCounter
     {
-        public static Tuple<string, int>[] GetWordsFrequencies(IEnumerable<string> words)
+        public Tuple<string, int>[] GetWordsFrequencies(IEnumerable<string> words)
         {
             return words.Select(w => w.ToLower())
                 .GroupBy(w => w)

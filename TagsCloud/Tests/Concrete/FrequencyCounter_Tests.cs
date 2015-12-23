@@ -18,7 +18,7 @@ namespace Tests
                 Tuple.Create("c", 1)
             };
 
-            var result = FrequencyCounter.GetWordsFrequencies(data);
+            var result = new FrequencyCounter().GetWordsFrequencies(data);
 
             Assert.AreEqual(expected, result);
         }

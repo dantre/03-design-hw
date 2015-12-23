@@ -4,7 +4,7 @@ namespace TagsCloud.Concrete
 {
     public class TxtReader
     {
-        public static string GetRawText(string filename)
+        public string GetRawText(string filename)
         {
             return File.ReadAllText(filename);
         }

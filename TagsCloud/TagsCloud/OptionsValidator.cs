@@ -1,36 +1,24 @@
 ﻿using System.IO;
-using TagsCloud.Concrete.Algorithms;
 
 namespace TagsCloud
 {
-    public static class OptionsValidator
+    public class OptionsValidator
     {
-        public static bool IsValid(InputOptions inputOptions, out string message)
+        public bool IsValid(InputOptions inputOptions, out string message)
         {
-            // CR (krait): Эту портянку не помешало бы как-то разбить и избавить от дублирования. Если число параметров увеличится, здесь будет полный треш.
             if (!File.Exists(inputOptions.InputFile))
             {
                 message = "File not found.";
                 return false;
             }
-            if (inputOptions.Height < 40)
+            if (!IsOkWidth(inputOptions.Width))
             {
-                message = "Height too little";
+                message = "Width is not vaild";
                 return false;
             }
-            if (inputOptions.Width < 40)
+            if (!IsOkHeight(inputOptions.Height))
             {
-                message = "Width too little";
-                return false;
-            }
-            if (inputOptions.Height > 2048)
-            {
-                message = "Height too big";
-                return false;
-            }
-            if (inputOptions.Width > 2048)
-            {
-                message = "Width too big";
+                message = "Height is not valid";
                 return false;
             }
             if (inputOptions.MaxFont < inputOptions.MinFont)
@@ -38,8 +26,7 @@ namespace TagsCloud
                 message = "Max font must be greater then Min font";
                 return false;
             }
-            // CR (krait): При появлении нового алгоритма придется сделать много работы: добавить его сюда, в текст хелпа и в UpdateAlgoInKernel. Кажется, этого можно было легко избежать. 
-            if (inputOptions.AlgorithmName != "Line" && inputOptions.AlgorithmName != "Column")
+            if (!new AlgorithmsNames().IsAlgorithmExists(inputOptions.AlgorithmName))
             {
                 message = "Unknown algorithm";
                 return false;
@@ -48,14 +35,14 @@ namespace TagsCloud
             return true;
         }
 
-        public static Kernel UpdateAlgoInKernel(InputOptions inputOptions, Kernel kernel)
+        private bool IsOkWidth(int width)
         {
-            if (inputOptions.AlgorithmName == "Line")
-            {
-                kernel.GetBitmap = LineAlgorithm.GetBitmap;
-                return kernel;
-            }
-            return kernel;
+            return width > 40 && width < 2048;
+        }
+
+        private bool IsOkHeight(int height)
+        {
+            return height > 40 && height < 2048;
         }
     }
 }

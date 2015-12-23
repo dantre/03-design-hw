@@ -10,19 +10,19 @@ namespace TagsCloud
 {
     public static class BitmapMethods
     {
-        public static IEnumerable<Bitmap> GetTextImages(IEnumerable<Tuple<string, int>> fonts, InputOptions inputOptions)
+        public static IEnumerable<Bitmap> GetTextImages(IEnumerable<Tuple<string, int>> fonts, string fontName, string backgroundColor, string textColor)
         {
             var mixedFonts = fonts.OrderBy(e => Guid.NewGuid());
-            return mixedFonts.Select(tuple => CreateBitmapImage(tuple.Item1, tuple.Item2, inputOptions));
+            return mixedFonts.Select(tuple => CreateBitmapImage(tuple.Item1, tuple.Item2, fontName, backgroundColor, textColor));
         }
 
-        public static Bitmap CreateBitmapImage(string text, int size, InputOptions inputOptions)
+        public static Bitmap CreateBitmapImage(string text, int size, string fontName, string backgroundColor, string textColor)
         {
             Bitmap objBmpImage = new Bitmap(1, 1);
             int intWidth = 0;
             int intHeight = 0;
 
-            Font objFont = new Font(inputOptions.FontName, size, FontStyle.Bold, GraphicsUnit.Pixel);
+            Font objFont = new Font(fontName, size, FontStyle.Bold, GraphicsUnit.Pixel);
             Graphics objGraphics = Graphics.FromImage(objBmpImage);
 
             intWidth = (int)objGraphics.MeasureString(text, objFont).Width;
@@ -32,10 +32,10 @@ namespace TagsCloud
 
             objGraphics = Graphics.FromImage(objBmpImage);
 
-            objGraphics.Clear(Color.FromName(inputOptions.BackgroundColor));
+            objGraphics.Clear(Color.FromName(backgroundColor));
             objGraphics.SmoothingMode = SmoothingMode.AntiAlias;
             objGraphics.TextRenderingHint = TextRenderingHint.AntiAlias;
-            objGraphics.DrawString(text, objFont, new SolidBrush(Color.FromName(inputOptions.TextColor)), 0, 0);
+            objGraphics.DrawString(text, objFont, new SolidBrush(Color.FromName(textColor)), 0, 0);
             objGraphics.Flush();
 
             return (objBmpImage);

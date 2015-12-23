@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Drawing;
-using Ninject;
-using NSubstitute;
 using NUnit.Framework;
 using TagsCloud;
 using TagsCloud.Generators;
@@ -32,8 +30,7 @@ namespace Tests
                 AlgorithmName = "Column"
             };
             
-            kernel = new Kernel();
-            kernel.ReadText = new Func<string, string>(FakeReader);
+            kernel = new Kernel(inputOptions, new Func<string, string>(FakeReader));
             generator = new TagsCloudGenerator(inputOptions, kernel);
         }
 

@@ -13,7 +13,7 @@ namespace Tests
             string data = @"A,B. CC, A ! D";
             string[] expectedResult = {"A", "B", "CC", "A", "D"};
 
-            var result = WordsFromTextExtractor.GetWords(data);
+            var result = new WordsFromTextExtractor().GetWords(data);
 
             CollectionAssert.AreEqual(expectedResult, result);
         }
@@ -23,7 +23,7 @@ namespace Tests
         {
             string data = @"A B A C";
 
-            var result = WordsFromTextExtractor.GetWords(data);
+            var result = new WordsFromTextExtractor().GetWords(data);
 
             Assert.AreEqual(4, result.Count());
         }

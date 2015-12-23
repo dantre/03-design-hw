@@ -6,14 +6,14 @@ namespace TagsCloud.Concrete
 {
     public class FontProcessor
     {
-        public static IEnumerable<Tuple<string, int>> GetFonts(Tuple<string, int>[] words, InputOptions _inputOptions)
+        public IEnumerable<Tuple<string, int>> GetFonts(Tuple<string, int>[] words, int maxFont, int minFont)
         {
             int minCount = words.Min(t => t.Item2);
             int maxCount = words.Max(t => t.Item2);
-            return words.Select(tuple => Tuple.Create(tuple.Item1, CountFont(tuple.Item2, _inputOptions.MaxFont, _inputOptions.MinFont, minCount, maxCount)));
+            return words.Select(tuple => Tuple.Create(tuple.Item1, CountFont(tuple.Item2, maxFont, minFont, minCount, maxCount)));
         }
 
-        private static int CountFont(int count, int maxFont, int minFont, int minCount, int maxCount)
+        private int CountFont(int count, int maxFont, int minFont, int minCount, int maxCount)
         {
             if (maxCount == minCount)
                 return (maxFont + minFont)/2;
