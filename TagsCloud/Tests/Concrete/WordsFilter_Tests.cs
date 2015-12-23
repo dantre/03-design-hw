@@ -12,7 +12,7 @@ namespace Tests
             var data = new[] {"A", "and", "B", "or", "C"};
             var expected = new[] {"A", "B", "C"};
 
-            var result = WordsFilter.RemoveBadWords(data);
+            var result = new WordsFilter().RemoveBadWords(data);
 
             Assert.AreEqual(expected, result);
         }
@@ -23,7 +23,7 @@ namespace Tests
             var data = new[] { "A", "B", "C" };
             var expected = new[] { "A", "B", "C" };
 
-            var result = WordsFilter.RemoveBadWords(data);
+            var result = new WordsFilter().RemoveBadWords(data);
 
             Assert.AreEqual(expected, result);
         }

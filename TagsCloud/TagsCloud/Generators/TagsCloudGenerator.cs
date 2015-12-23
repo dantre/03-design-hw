@@ -1,8 +1,4 @@
 ﻿using System.Drawing;
-using Ninject;
-using TagsCloud.Concrete;
-using TagsCloud.Concrete.Algorithms;
-using TagsCloud.Concrete.WordsExtractors;
 
 namespace TagsCloud.Generators
 {
@@ -20,13 +16,18 @@ namespace TagsCloud.Generators
         public Bitmap Generate()
         {
             return kernel.GetBitmap(
-                kernel.CountFonts(
-                    kernel.CountFrequencies(
-                        kernel.FilterWords(
-                            kernel.ExtractWords(
-                                kernel.ReadText(inputOptions.InputFile)))),
-                    inputOptions),
-                inputOptions);
+                    kernel.CountFonts(
+                        kernel.CountFrequencies(
+                            kernel.FilterWords(
+                                kernel.ExtractWords(
+                                    kernel.ReadText(inputOptions.InputFile)))),
+                            inputOptions.MaxFont, 
+                            inputOptions.MinFont),
+                        inputOptions.FontName,
+                        inputOptions.BackgroundColor,
+                        inputOptions.TextColor,
+                        inputOptions.Width,
+                        inputOptions.Height);
         }
     }
 }

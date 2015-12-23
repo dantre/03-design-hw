@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Drawing;
 using System.Drawing.Imaging;
-using System.Net.Http;
 using CommandLine;
 using TagsCloud.Generators;
 
@@ -17,19 +16,26 @@ namespace TagsCloud
         {
             this.args = args;
             inputOptions = new InputOptions();
-            kernel = new Kernel();
         }
 
         public void Run()
         {
             if (!Parser.Default.ParseArguments(args, inputOptions)) return;
             string errorMessage;
-            if (!OptionsValidator.IsValid(inputOptions, out errorMessage))
+            if (!new OptionsValidator().IsValid(inputOptions, out errorMessage))
             {
                 Console.WriteLine(errorMessage);
                 return;
             }
-            kernel = OptionsValidator.UpdateAlgoInKernel(inputOptions, kernel);
+            try
+            {
+                kernel = new Kernel(inputOptions);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return;
+            }
 
             Image image = new TagsCloudGenerator(inputOptions, kernel).Generate();
             image.Save(inputOptions.OutputFile, ImageFormat.Png);

@@ -26,7 +26,7 @@ namespace Tests
                 Tuple.Create("C", 10)
             };
 
-            var result = FontProcessor.GetFonts(data, settings).ToList();
+            var result = new FontProcessor().GetFonts(data, settings.MaxFont, settings.MinFont).ToList();
 
             CollectionAssert.AreEqual(expected, result);
         }

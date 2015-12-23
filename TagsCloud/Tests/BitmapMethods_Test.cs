@@ -39,7 +39,7 @@ namespace Tests
         [Test]
         public void CreateBitmapImage_chould_create_bitmap()
         {
-            var result = BitmapMethods.CreateBitmapImage("some text", 20, new InputOptions {FontName = "Arial", TextColor = "Red", BackgroundColor = "Green"});
+            var result = BitmapMethods.CreateBitmapImage("some text", 20, "Arial", "Red", "Green");
 
             Assert.AreEqual(typeof(Bitmap), result.GetType());
         }

@@ -56,6 +56,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AlgorithmsNames.cs" />
     <Compile Include="BitmapMethods.cs" />
     <Compile Include="Concrete\Algorithms\ColumnsAlgorithm.cs" />
     <Compile Include="Concrete\Algorithms\LineAlgorithm.cs" />

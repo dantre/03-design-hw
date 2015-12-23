@@ -7,14 +7,14 @@ namespace TagsCloud.Concrete.Algorithms
 {
     public class LineAlgorithm
     {
-        public static Bitmap GetBitmap(IEnumerable<Tuple<string, int>> fonts, InputOptions _inputOptions)
+        public Bitmap GetBitmap(IEnumerable<Tuple<string, int>> fonts, string fontName, string backgroundColor, string textColor, int width, int height)
         {
-            var textImages = BitmapMethods.GetTextImages(fonts, _inputOptions).ToList();
+            var textImages = BitmapMethods.GetTextImages(fonts, fontName, backgroundColor, textColor).ToList();
             int maxHeight = textImages.Max(i => i.Height);
             var resultImage = new Bitmap(textImages.Sum(i => i.Width), maxHeight);
 
             var objGraphics = Graphics.FromImage(resultImage);
-            objGraphics.Clear(Color.FromName(_inputOptions.BackgroundColor));
+            objGraphics.Clear(Color.FromName(backgroundColor));
             objGraphics.Flush();
 
             int x = 0;
@@ -24,7 +24,7 @@ namespace TagsCloud.Concrete.Algorithms
                     resultImage, new Rectangle(x, (maxHeight - image.Height) / 2, image.Width, image.Height));
                 x += image.Width;
             }
-            return BitmapMethods.ResizeImage(resultImage, _inputOptions.Width, _inputOptions.Height);
+            return BitmapMethods.ResizeImage(resultImage, width, height);
         }
     }
 }
