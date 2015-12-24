@@ -15,19 +15,20 @@ namespace TagsCloud.Generators
 
         public Bitmap Generate()
         {
-            return kernel.GetBitmap(
-                    kernel.CountFonts(
-                        kernel.CountFrequencies(
-                            kernel.FilterWords(
-                                kernel.ExtractWords(
-                                    kernel.ReadText(inputOptions.InputFile)))),
-                            inputOptions.MaxFont, 
-                            inputOptions.MinFont),
-                        inputOptions.FontName,
-                        inputOptions.BackgroundColor,
-                        inputOptions.TextColor,
-                        inputOptions.Width,
-                        inputOptions.Height);
+            return null;
+//            return kernel.GetBitmap(
+//                    kernel.CountFonts(
+//                        kernel.CountFrequencies(
+//                            kernel.FilterWords(
+//                                kernel.ExtractWords(
+//                                    kernel.ReadText(inputOptions.InputFile)))),
+//                            inputOptions.MaxFont, 
+//                            inputOptions.MinFont),
+//                        inputOptions.FontName,
+//                        inputOptions.BackgroundColor,
+//                        inputOptions.TextColor,
+//                        inputOptions.Width,
+//                        inputOptions.Height);
         }
     }
 }

@@ -18,7 +18,7 @@ namespace Tests
                 Tuple.Create("B", 5),
                 Tuple.Create("C", 1)
             };
-            var settings = new InputOptions {MinFont = 10, MaxFont = 20};
+            var inputOptions = new InputOptions {MinFont = 10, MaxFont = 20};
             var expected = new[]
             {
                 Tuple.Create("A", 20),
@@ -26,7 +26,7 @@ namespace Tests
                 Tuple.Create("C", 10)
             };
 
-            var result = new FontProcessor().GetFonts(data, settings.MaxFont, settings.MinFont).ToList();
+            var result = new FontProcessor(inputOptions).GetFonts(data).ToList();
 
             CollectionAssert.AreEqual(expected, result);
         }

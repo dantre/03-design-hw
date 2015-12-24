@@ -7,19 +7,19 @@ namespace TagsCloud
 {
     public class AlgorithmsNames
     {
-        private readonly Dictionary<string, Func<IEnumerable<Tuple<string, int>>, string, string, string, int, int, Bitmap>> AlgoDictionary;
+        private readonly Dictionary<string, Func<IEnumerable<Tuple<string, int>>, Bitmap>> AlgoDictionary;
 
-        public AlgorithmsNames()
+        public AlgorithmsNames(InputOptions inputOptions)
         {
             AlgoDictionary =
-                new Dictionary<string, Func<IEnumerable<Tuple<string, int>>, string, string, string, int, int, Bitmap>>
+                new Dictionary<string, Func<IEnumerable<Tuple<string, int>> , Bitmap>>
                 {
-                    {"Line", new LineAlgorithm().GetBitmap},
-                    {"Column", new ColumnsAlgorithm().GetBitmap}
+                    {"Line", new LineAlgorithm(inputOptions).GetBitmap},
+                    {"Column", new ColumnsAlgorithm(inputOptions).GetBitmap}
                 };
         }
 
-        public Func<IEnumerable<Tuple<string, int>>, string, string, string, int, int, Bitmap> GetAlgorithmByName(string name)
+        public Func<IEnumerable<Tuple<string, int>>, Bitmap> GetAlgorithmByName(string name)
         {
             if (IsAlgorithmExists(name))
                 return AlgoDictionary[name];

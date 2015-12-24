@@ -7,7 +7,22 @@ namespace TagsCloud.Concrete.Algorithms
 {
     public class ColumnsAlgorithm 
     {
-        public Bitmap GetBitmap(IEnumerable<Tuple<string, int>> fonts, string fontName, string backgroundColor, string textColor, int width, int height)
+        private readonly string fontName;
+        private readonly string backgroundColor;
+        private readonly string textColor;
+        private readonly int width;
+        private readonly int height;
+
+        public ColumnsAlgorithm(InputOptions inputOptions)
+        {
+            fontName = inputOptions.FontName;
+            backgroundColor = inputOptions.BackgroundColor;
+            textColor = inputOptions.TextColor;
+            width = inputOptions.Width;
+            height = inputOptions.Height;
+        }
+
+        public Bitmap GetBitmap(IEnumerable<Tuple<string, int>> fonts)
         {
             var textImages = BitmapMethods.GetTextImages(fonts, fontName, backgroundColor, textColor).ToList();
             int maxHeight = textImages.Max(i => i.Height);

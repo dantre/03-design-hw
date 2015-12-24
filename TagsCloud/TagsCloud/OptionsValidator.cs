@@ -26,7 +26,7 @@ namespace TagsCloud
                 message = "Max font must be greater then Min font";
                 return false;
             }
-            if (!new AlgorithmsNames().IsAlgorithmExists(inputOptions.AlgorithmName))
+            if (!new AlgorithmsNames(inputOptions).IsAlgorithmExists(inputOptions.AlgorithmName))
             {
                 message = "Unknown algorithm";
                 return false;
