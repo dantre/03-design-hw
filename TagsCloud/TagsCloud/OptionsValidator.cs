@@ -1,4 +1,7 @@
-﻿using System.IO;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using NUnit.Framework;
 
 namespace TagsCloud
 {
@@ -11,21 +14,23 @@ namespace TagsCloud
                 message = "File not found.";
                 return false;
             }
-            if (!IsOkWidth(inputOptions.Width))
+
+            if (!IsOkParameter(inputOptions.Width, 40, 2048))
             {
                 message = "Width is not vaild";
                 return false;
             }
-            if (!IsOkHeight(inputOptions.Height))
+            if (!IsOkParameter(inputOptions.Height, 40, 2048))
             {
                 message = "Height is not valid";
                 return false;
             }
-            if (inputOptions.MaxFont < inputOptions.MinFont)
+            if (!IsOkParameter(inputOptions.MinFont, 8, inputOptions.MaxFont))
             {
                 message = "Max font must be greater then Min font";
                 return false;
             }
+
             if (!new AlgorithmsNames(inputOptions).IsAlgorithmExists(inputOptions.AlgorithmName))
             {
                 message = "Unknown algorithm";
@@ -34,16 +39,9 @@ namespace TagsCloud
             message = "";
             return true;
         }
-
-        // CR (krait): Стало лучше, но можно ещё лучше. Этот код можно не дублировать.
-        private bool IsOkWidth(int width)
+        private bool IsOkParameter(int value, int minValue, int maxValue)
         {
-            return width > 40 && width < 2048;
-        }
-
-        private bool IsOkHeight(int height)
-        {
-            return height > 40 && height < 2048;
+            return value> minValue && value < maxValue;
         }
     }
 }

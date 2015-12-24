@@ -14,8 +14,7 @@ namespace TagsCloud
         public readonly Func<IEnumerable<string>, Tuple<string, int>[]> CountFrequencies;
         public readonly Func<Tuple<string, int>[], IEnumerable<Tuple<string, int>>> CountFonts;
         public readonly Func<IEnumerable<Tuple<string, int>>, Bitmap> GetBitmap;
-
-        // CR (krait): Сигнатуры этих методов стали монструозными, это никуда не годится. В комментарии была рекомендация передавать параметры из InputOptions в конструкторы этих классов. Это бы решило проблему.
+        
         public Kernel(InputOptions inputOptions) : this(inputOptions, new TxtReader().GetRawText) { }
 
         public Kernel(InputOptions inputOptions, Func<string, string> readerFunc)
