@@ -8,7 +8,7 @@ namespace TagsCloud
 {
     public class Kernel
     {
-        public readonly Func<string, string> ReadText;
+        public Func<string, string> ReadText;
         public readonly Func<string, IEnumerable<string>> ExtractWords;
         public readonly Func<IEnumerable<string>, IEnumerable<string>> FilterWords;
         public readonly Func<IEnumerable<string>, Tuple<string, int>[]> CountFrequencies;
@@ -25,16 +25,24 @@ namespace TagsCloud
             CountFonts = new FontProcessor().GetFonts;
             GetBitmap = new AlgorithmsNames().GetAlgorithmByName(inputOptions.AlgorithmName);
         }
+    }
 
-        public Kernel(InputOptions inputOptions, Func<string, string> readerFunc)
+    public class TestKernel : Kernel
+    {
+        public TestKernel(InputOptions inputOptions, Func<string, string> readerFunc) : base(inputOptions)
         {
-            // CR (krait): Не надо дублировать код конструктора. Конструкторы можно наследовать.
             ReadText = readerFunc;
-            ExtractWords = new WordsFromTextExtractor().GetWords;
-            FilterWords = new WordsFilter().RemoveBadWords;
-            CountFrequencies = new FrequencyCounter().GetWordsFrequencies;
-            CountFonts = new FontProcessor().GetFonts;
-            GetBitmap = new AlgorithmsNames().GetAlgorithmByName(inputOptions.AlgorithmName);
         }
+    }
+
+//    public Kernel(InputOptions inputOptions, Func<string, string> readerFunc) : base(inputOptions)
+//        {
+        //            // CR (krait): Не надо дублировать код конструктора. Конструкторы можно наследовать.
+        //            ReadText = readerFunc;
+        //            ExtractWords = new WordsFromTextExtractor().GetWords;
+        //            FilterWords = new WordsFilter().RemoveBadWords;
+        //            CountFrequencies = new FrequencyCounter().GetWordsFrequencies;
+        //            CountFonts = new FontProcessor().GetFonts;
+        //            GetBitmap = new AlgorithmsNames().GetAlgorithmByName(inputOptions.AlgorithmName);
     }
 }
