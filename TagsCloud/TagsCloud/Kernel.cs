@@ -17,6 +17,7 @@ namespace TagsCloud
         
         public Kernel(InputOptions inputOptions)
         {
+            // CR (krait): Сигнатуры этих методов стали монструозными, это никуда не годится. В комментарии была рекомендация передавать параметры из InputOptions в конструкторы этих классов. Это бы решило проблему.
             ReadText = new TxtReader().GetRawText;
             ExtractWords = new WordsFromTextExtractor().GetWords;
             FilterWords = new WordsFilter().RemoveBadWords;
@@ -27,6 +28,7 @@ namespace TagsCloud
 
         public Kernel(InputOptions inputOptions, Func<string, string> readerFunc)
         {
+            // CR (krait): Не надо дублировать код конструктора. Конструкторы можно наследовать.
             ReadText = readerFunc;
             ExtractWords = new WordsFromTextExtractor().GetWords;
             FilterWords = new WordsFilter().RemoveBadWords;

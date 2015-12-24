@@ -35,6 +35,7 @@ namespace TagsCloud
             return true;
         }
 
+        // CR (krait): Стало лучше, но можно ещё лучше. Этот код можно не дублировать.
         private bool IsOkWidth(int width)
         {
             return width > 40 && width < 2048;
