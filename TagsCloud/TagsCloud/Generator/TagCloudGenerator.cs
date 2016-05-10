@@ -22,7 +22,7 @@ namespace TagsCloud.Generator
 
         public System.Drawing.Bitmap Generate()
         {
-            var fonts = GetFonts();
+            var fonts = GetWordsAndFontSizes();
             try
             {
                 System.Drawing.Bitmap image = Program.AppKernel.Get<IAlgorithm>(options.AlgorithmName).GetBitmap(fonts, options);
@@ -34,14 +34,14 @@ namespace TagsCloud.Generator
             }
         }
 
-        public IList<WordIntPair> GetFonts()
+        public IList<WordIntPair> GetWordsAndFontSizes()
         {
             var text = Program.AppKernel.Get<IFileReader>().GetRawText(options.InputFile);
             var words = Program.AppKernel.Get<IWordsExtractor>().GetWords(text);
             var filteredWords = Program.AppKernel.Get<IWordsFilter>().RemoveBadWords(words);
-            var tuples = Program.AppKernel.Get<IFrequencyCounter>().GetOrderedWordsFrequencies(filteredWords);
-            var fonts = Program.AppKernel.Get<IFontProcessor>().GetFonts(tuples, options);
-            return fonts;
+            var wordsAndFreqs = Program.AppKernel.Get<IFrequencyCounter>().GetOrderedWordsAndFrequencies(filteredWords);
+            var wordsAndFontsSizes = Program.AppKernel.Get<IFontProcessor>().GetFontSizes(wordsAndFreqs, options);
+            return wordsAndFontsSizes;
         }
     }
 }

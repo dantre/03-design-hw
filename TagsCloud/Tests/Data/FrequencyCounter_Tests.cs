@@ -14,7 +14,7 @@ namespace Tests.Data
         {
             var proc = new FrequencyCounter();
             var data = new[] {"a", "b", "c", "a", "a", "b"};
-            var result = proc.GetOrderedWordsFrequencies(data);
+            var result = proc.GetOrderedWordsAndFrequencies(data);
             Assert.AreEqual(3, result.Count);
         }
         [TestMethod]
@@ -28,7 +28,7 @@ namespace Tests.Data
                 new WordIntPair("b", 2),
                 new WordIntPair("c", 1)
             };
-            var result = proc.GetOrderedWordsFrequencies(data);
+            var result = proc.GetOrderedWordsAndFrequencies(data);
             CollectionAssert.AreEqual(expected, result.ToList());
         }
     }

@@ -4,6 +4,6 @@ namespace TagsCloud.Data.Frequencies
 {
     public interface IFrequencyCounter
     {
-       IList<WordIntPair> GetOrderedWordsFrequencies(IEnumerable<string> words);
+       IList<WordIntPair> GetOrderedWordsAndFrequencies(IEnumerable<string> words);
     }
 }

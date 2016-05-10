@@ -20,7 +20,6 @@ namespace TagsCloud.NInject
             Bind<IFontProcessor>().To<FontProcessor>();
             Bind<IAlgorithm>().To<ColumnsAlgorithm>().Named("Column");
             Bind<IAlgorithm>().To<LineAlgorithm>().Named("Line");
-            Bind<IOptionsValidator>().To<InputOptionsValidator>();
         }
     }
 }

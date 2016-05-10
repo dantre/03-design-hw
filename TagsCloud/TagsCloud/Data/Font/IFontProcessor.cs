@@ -5,6 +5,6 @@ namespace TagsCloud.Data.Font
 {
     public interface IFontProcessor
     {
-        IList<WordIntPair> GetFonts(IList<WordIntPair> wordsAndFreqs, InputOptions options);
+        IList<WordIntPair> GetFontSizes(IList<WordIntPair> wordsAndFreqs, InputOptions options);
     }
 }

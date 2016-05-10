@@ -5,7 +5,7 @@ namespace TagsCloud.Data.Frequencies
 {
     public class FrequencyCounter: IFrequencyCounter
     {
-        public IList<WordIntPair> GetOrderedWordsFrequencies(IEnumerable<string> words)
+        public IList<WordIntPair> GetOrderedWordsAndFrequencies(IEnumerable<string> words)
         {
             return words.Select(w => w.ToLower())
                 .GroupBy(w => w)

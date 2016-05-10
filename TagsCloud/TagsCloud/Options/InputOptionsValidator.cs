@@ -14,8 +14,9 @@ namespace TagsCloud.Options
         private readonly Dictionary<Func<bool>, string> RulesAndErrorMessages;
         private readonly List<string> knownAlgorithms = new List<string> {"Column", "Line"};
 
-        public InputOptionsValidator()
+        public InputOptionsValidator(InputOptions options)
         {
+            Options = options;
             RulesAndErrorMessages = new Dictionary<Func<bool>, string>
             {
                 { CheckHeight, "Validation Error: Wrong height" },
@@ -29,9 +30,8 @@ namespace TagsCloud.Options
             };
         }
 
-        public bool IsValid(InputOptions options, out string message)
+        public bool IsValid(out string message)
         {
-            Options = options;
             foreach (var rulesAndErrorMessage in RulesAndErrorMessages)
             {
                 if (!rulesAndErrorMessage.Key())
@@ -50,11 +50,6 @@ namespace TagsCloud.Options
         }
 
         #region Options checks
-
-        public bool IsValid(out string message)
-        {
-            throw new NotImplementedException();
-        }
 
         public bool CheckInputFile()
         {
@@ -100,7 +95,7 @@ namespace TagsCloud.Options
 
     internal interface IOptionsValidator
     {
-        bool IsValid(InputOptions options, out string message);
+        bool IsValid(out string message);
         bool CheckInputFile();
         bool CheckWidth();
         bool CheckHeight();

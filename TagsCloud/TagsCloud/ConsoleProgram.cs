@@ -16,6 +16,7 @@ namespace TagsCloud
         {
             if (!IsOptionsProper(arguments))
                 return;
+
             var generator = new TagCloudGenerator(options);
             try
             {
@@ -50,14 +51,14 @@ namespace TagsCloud
         private bool ValidatorAccepts()
         {
             string message;
-            if (!Program.AppKernel.Get<IOptionsValidator>().IsValid(options, out message))
+            var validator = new InputOptionsValidator(options);
+            if (!validator.IsValid(out message))
             {
                 Console.WriteLine(message);
                 return false;
             }
             return true;
         }
-
     }
 
     public class UnknownAlgorithmException : Exception

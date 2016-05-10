@@ -6,15 +6,29 @@ namespace Tests.Options
     [TestClass]
     public class InputOptionsValidtor_Tests
     {
-        private InputOptions options;
+        private readonly InputOptions options = new InputOptions
+        {
+            AlgorithmName = "Column",
+            BackgroundColor = "Red",
+            TextColor = "Green",
+            FontName = "Arial",
+            Height = 100,
+            Width = 100,
+            MaxFont = 40,
+            MinFont = 10
+        };
         private InputOptionsValidator validator;
         [TestInitialize]
         public void Init()
         {
-            options = new InputOptions();
-            validator = new InputOptionsValidator();
+            validator = new InputOptionsValidator(options);
         }
 
+        [TestMethod]
+        public void IsValid_on_good_config_should_return_true()
+        {
+           // ifvalidator.CheckWidth()
+        }
         [TestMethod]
         public void IsParameterInSegment_on_20_between_10_and_30_should_return_true()
         {

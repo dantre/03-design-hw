@@ -7,13 +7,6 @@ namespace TagsCloud.Data.Font
 {
     public class FontProcessor : IFontProcessor
     {
-        public IEnumerable<Tuple<string, int>> GetFonts(Tuple<string, int>[] words, InputOptions options)
-        {
-            int minCount = words.Min(t => t.Item2);
-            int maxCount = words.Max(t => t.Item2);
-            return words.Select(tuple => Tuple.Create(tuple.Item1, CountFont(tuple.Item2, options.MaxFont, options.MinFont, minCount, maxCount)));
-        }
-
         private int CountFont(int count, int maxFont, int minFont, int minCount, int maxCount)
         {
             if (maxCount == minCount)
@@ -21,7 +14,7 @@ namespace TagsCloud.Data.Font
             return minFont + (int) Math.Ceiling((maxFont - minFont) * (count - minCount) * 1.0 / (maxCount - minCount));
         }
 
-        public IList<WordIntPair> GetFonts(IList<WordIntPair> wordsAndFreqs, InputOptions options)
+        public IList<WordIntPair> GetFontSizes(IList<WordIntPair> wordsAndFreqs, InputOptions options)
         {
             int minCount = wordsAndFreqs.Min(t => t.Number);
             int maxCount = wordsAndFreqs.Max(t => t.Number);
