@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Drawing;
 using System.Drawing.Imaging;
-using System.IO;
 using CommandLine;
 using Ninject;
+using TagsCloud.Generator;
 using TagsCloud.Options;
 
 namespace TagsCloud
@@ -20,32 +20,32 @@ namespace TagsCloud
         public void Run()
         {
             var options = new InputOptions();
-            if (Parser.Default.ParseArguments(args, options))
+            if (!Parser.Default.ParseArguments(args, options))
             {
-                string message;
-                if (InputOptionsValidator.IsValid(options, out message))
-                {
-                    Console.WriteLine(message);
-                }
-
-                var generator = new TagsCloudGenerator(options);
-                try
-                {
-                    Image image = generator.Generate();
-                    image.Save(options.OutputFile, ImageFormat.Png);
-                }
-                catch (UnknownAlgorithmException)
-                {
-                    Console.WriteLine("Unknown algorithm");
-                }
-                catch (ArgumentException)
-                {
-                    Console.WriteLine("Wrong arguments value");
-                }
+                Console.WriteLine("Command line parser error");
+                return;
             }
-            else
+
+            string message;
+            if (Program.AppKernel.Get<IOptionsValidator>().IsValid(out message))
             {
-                Console.WriteLine("Wrong arguments type");
+                Console.WriteLine(message);
+                return;
+            }
+
+            var generator = new TagsCloudGenerator(options);
+            try
+            {
+                Image image = generator.Generate();
+                image.Save(options.OutputFile, ImageFormat.Png);
+            }
+            catch (UnknownAlgorithmException)
+            {
+                Console.WriteLine("Unknown algorithm");
+            }
+            catch (ArgumentException)
+            {
+                Console.WriteLine("Wrong arguments value");
             }
         }
     }

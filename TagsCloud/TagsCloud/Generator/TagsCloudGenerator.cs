@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using Ninject;
 using TagsCloud.Bitmap.Algorithms;
 using TagsCloud.Data;
@@ -11,7 +9,7 @@ using TagsCloud.Data.Readers;
 using TagsCloud.Data.WordsExtractors;
 using TagsCloud.Options;
 
-namespace TagsCloud
+namespace TagsCloud.Generator
 {
     public class TagsCloudGenerator
     {

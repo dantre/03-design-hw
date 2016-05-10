@@ -2,9 +2,9 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Ninject;
 using NSubstitute;
-
 using TagsCloud;
 using TagsCloud.Data.Readers;
+using TagsCloud.Generator;
 using TagsCloud.NInject;
 using TagsCloud.Options;
 

@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using TagsCloud.Data;
 using TagsCloud.Options;

@@ -53,6 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bitmap\Algorithms\IAlgorithm.cs" />
+    <Compile Include="Bitmap\ColorChecker.cs" />
     <Compile Include="Data\Readers\IFileReader.cs" />
     <Compile Include="Data\Frequencies\IFrequencyCounter.cs" />
     <Compile Include="Data\Font\IFontProcessor.cs" />
@@ -70,7 +71,7 @@
     <Compile Include="Data\WordsExtractors\WordsOnePerLineExtractor.cs" />
     <Compile Include="ConsoleProgram.cs" />
     <Compile Include="Options\InputOptionsValidator.cs" />
-    <Compile Include="TagsCloudGenerator.cs" />
+    <Compile Include="Generator\TagsCloudGenerator.cs" />
     <Compile Include="NInject\BindingModule.cs" />
     <Compile Include="Options\InputOptions.cs" />
     <Compile Include="Program.cs" />
