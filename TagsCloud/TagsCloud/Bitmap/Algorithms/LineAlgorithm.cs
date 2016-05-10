@@ -8,15 +8,22 @@ namespace TagsCloud.Bitmap.Algorithms
 {
     public class LineAlgorithm : BaseAlgorithm
     {
+        private int maxHeight;
+        private int sumWidth;
+
         public override System.Drawing.Bitmap GetBitmap(IList<WordIntPair> fonts, InputOptions options)
         {
             var textImages = BitmapMethods.GetTextImages(fonts, options).ToList();
-            int maxHeight = textImages.Max(i => i.Height);
-            int sumWidth = textImages.Sum(i => i.Width);
+            CountVariables(textImages);
+
             var resultImage = new System.Drawing.Bitmap( sumWidth, maxHeight);
-
             FillBackgroundColor(resultImage, options.BackgroundColor);
+            FillImagesWithWordsImages(resultImage, textImages);
+            return BitmapMethods.ResizeImage(resultImage, options.Width, options.Height);
+        }
 
+        private void FillImagesWithWordsImages(System.Drawing.Bitmap resultImage, List<System.Drawing.Bitmap> textImages)
+        {
             int x = 0;
             foreach (var image in textImages)
             {
@@ -24,7 +31,12 @@ namespace TagsCloud.Bitmap.Algorithms
                     resultImage, new Rectangle(x, (maxHeight - image.Height) / 2, image.Width, image.Height));
                 x += image.Width;
             }
-            return BitmapMethods.ResizeImage(resultImage, options.Width, options.Height);
+        }
+
+        private void CountVariables(List<System.Drawing.Bitmap> textImages)
+        {
+            maxHeight = textImages.Max(i => i.Height);
+            sumWidth = textImages.Sum(i => i.Width);
         }
     }
 }
