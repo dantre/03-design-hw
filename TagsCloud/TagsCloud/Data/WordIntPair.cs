@@ -18,6 +18,37 @@ namespace TagsCloud.Data
             Word = word;
             Number = number;
         }
+
+        protected bool Equals(WordIntPair other)
+        {
+            return string.Equals(Word, other.Word) && Number == other.Number;
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(null, obj)) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            if (obj.GetType() != this.GetType()) return false;
+            return Equals((WordIntPair)obj);
+        }
+
+        public override int GetHashCode()
+        {
+            unchecked
+            {
+                return (Word.GetHashCode() * 397) ^ Number;
+            }
+        }
+
+        public static bool operator ==(WordIntPair left, WordIntPair right)
+        {
+            return Equals(left, right);
+        }
+
+        public static bool operator !=(WordIntPair left, WordIntPair right)
+        {
+            return !Equals(left, right);
+        }
     }
 
     public class WordIntPairComparer : Comparer<WordIntPair>
@@ -26,7 +57,7 @@ namespace TagsCloud.Data
         {
             if (x == null || y == null)
                 return 0;
-            return x.Number - y.Number;
+            return y.Number - x.Number;
         }
     }
 }
