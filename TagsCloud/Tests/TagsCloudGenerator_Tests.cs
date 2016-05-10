@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System.Collections.ObjectModel;
+using System.Drawing;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Ninject;
 using NSubstitute;
@@ -21,7 +22,7 @@ namespace Tests
         {
             options = new InputOptions
             {
-                Width = 100,
+                Width = 200,
                 Height = 100,
                 FontName = "Arial",
                 MinFont = 10,
@@ -41,24 +42,45 @@ namespace Tests
         }
 
         [TestMethod]
-        public void Generate_should_return_bitmap()
+        [ExpectedException(typeof(UnknownAlgorithmException))]
+        public void Generate_on_algorithm_name_ASD_should_throw_unknown_algorithm_ecxeption()
         {
-            var bitmap = generator.Generate();
-            Assert.AreEqual(typeof(System.Drawing.Bitmap), bitmap.GetType());
+            options.AlgorithmName = "ASD";
+            generator.Generate();
         }
 
         [TestMethod]
-        public void  Generate_should_return_bitmap_with_height_100()
+        public void  Generate_on_options_height_100_should_return_bitmap_with_height_100()
         {
             var bitmap = generator.Generate();
             Assert.AreEqual(100, bitmap.Height);
         }
 
         [TestMethod]
-        public void Generate_should_return_bitmap_with_first_pixel_red()
+        public void Generate_on_options_width_100_should_return_bitmap_with_width_200()
+        {
+            var bitmap = generator.Generate();
+            Assert.AreEqual(200, bitmap.Width);
+        }
+
+        [TestMethod]
+        public void Generate_on_backgroundColor_Red_should_return_bitmap_with_first_pixel_Red()
         {
             var bitmap = generator.Generate();
             Assert.AreEqual(Color.FromArgb(255, 255, 0, 0), bitmap.GetPixel(0, 0));
+        }
+
+        [TestMethod]
+        public void Generate_on_textColor_Yellow_should_contains_Yellow_pixel()
+        {
+            var bitmap = generator.Generate();
+            var pixels = new Collection<Color>();
+            for (int i = 1; i < bitmap.Width; i++)
+                for (int j = 1; j < bitmap.Height; j++)
+                {
+                    pixels.Add(bitmap.GetPixel(i,j));
+                }
+            CollectionAssert.Contains(pixels, Color.FromArgb(255, 255, 255, 0));
         }
     }
 }

@@ -1,15 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.IO;
-using System.Linq;
 using TagsCloud.Bitmap;
 
 namespace TagsCloud.Options
 {
     public class InputOptionsValidator : IOptionsValidator
     {
-        private InputOptions Options { get; set; }
+        private InputOptions Options { get; }
         private readonly ColorChecker colorChecker = new ColorChecker();
         private readonly Dictionary<Func<bool>, string> RulesAndErrorMessages;
         private readonly List<string> knownAlgorithms = new List<string> {"Column", "Line"};

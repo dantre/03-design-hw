@@ -2,7 +2,6 @@
 using System.Drawing;
 using System.Drawing.Imaging;
 using CommandLine;
-using Ninject;
 using TagsCloud.Generator;
 using TagsCloud.Options;
 
