@@ -1,7 +1,7 @@
 using NUnit.Framework;
 using TagsCloud.Data.Filters;
 
-namespace Tests.Concrete
+namespace Tests.Data
 {
     [TestFixture]
     public class WordsFilter_Tests
@@ -19,7 +19,7 @@ namespace Tests.Concrete
         }
 
         [Test]
-        public void RemoveBadWords_shouldnot_remove_not_articles()
+        public void RemoveBadWords_should_not_remove_not_articles()
         {
             var modifier = new WordsFilter();
             var data = new[] { "A", "B", "C" };

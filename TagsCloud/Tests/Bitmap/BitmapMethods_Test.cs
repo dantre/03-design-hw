@@ -1,9 +1,9 @@
 using System.Drawing;
 using NUnit.Framework;
-using TagsCloud;
 using TagsCloud.Bitmap;
+using TagsCloud.Options;
 
-namespace Tests
+namespace Tests.Bitmap
 {
     [TestFixture]
     public class BitmapMethods_Test
@@ -11,7 +11,7 @@ namespace Tests
         [Test]
         public void Resize_should_resize_pixel_to_square()
         {
-            var image = new Bitmap(1,1);
+            var image = new System.Drawing.Bitmap(1,1);
 
             var result = BitmapMethods.ResizeImage(image, 20, 20);
             Assert.AreEqual(20, result.Height);
@@ -21,12 +21,12 @@ namespace Tests
         [Test]
         public void CopyRegionIntoImage_should_copy_white_image_to_black_image()
         {
-            var sourceImage = new Bitmap(20, 20);
+            var sourceImage = new System.Drawing.Bitmap(20, 20);
             using (Graphics graphics = Graphics.FromImage(sourceImage))
             {
                 graphics.Clear(Color.Black);
             }
-            var destImage = new Bitmap(20, 20);
+            var destImage = new System.Drawing.Bitmap(20, 20);
             using (Graphics graphics = Graphics.FromImage(destImage))
             {
                 graphics.Clear(Color.White);
@@ -42,7 +42,7 @@ namespace Tests
         {
             var result = BitmapMethods.CreateBitmapImage("some text", 20, new InputOptions {FontName = "Arial", TextColor = "Red", BackgroundColor = "Green"});
 
-            Assert.AreEqual(typeof(Bitmap), result.GetType());
+            Assert.AreEqual(typeof(System.Drawing.Bitmap), result.GetType());
         }
     }
 }

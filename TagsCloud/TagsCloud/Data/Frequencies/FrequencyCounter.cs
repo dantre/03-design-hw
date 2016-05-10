@@ -6,13 +6,13 @@ namespace TagsCloud.Data.Frequencies
 {
     public class FrequencyCounter: IFrequencyCounter
     {
-        public Tuple<string, int>[] GetWordsFrequencies(IEnumerable<string> words)
+        public IList<WordIntPair> GetOrderedWordsFrequencies(IEnumerable<string> words)
         {
             return words.Select(w => w.ToLower())
                 .GroupBy(w => w)
-                .Select(w => Tuple.Create(w.Key, w.Count()))
-                .OrderByDescending(tuple => tuple.Item2)
-                .ToArray();
+                .Select(grouping => new WordIntPair(grouping.Key, grouping.Count()))
+                .OrderBy(pair => pair, WordIntPair.Comparer)
+                .ToList();
         }
     }
 }

@@ -1,10 +1,15 @@
-﻿using Ninject;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using Ninject;
 using TagsCloud.Bitmap.Algorithms;
+using TagsCloud.Data;
 using TagsCloud.Data.Filters;
 using TagsCloud.Data.Font;
 using TagsCloud.Data.Frequencies;
 using TagsCloud.Data.Readers;
 using TagsCloud.Data.WordsExtractors;
+using TagsCloud.Options;
 
 namespace TagsCloud
 {
@@ -19,21 +24,26 @@ namespace TagsCloud
 
         public System.Drawing.Bitmap Generate()
         {
-            var text = Program.AppKernel.Get<IFileReader>().GetRawText(options.InputFile);
-            var words = Program.AppKernel.Get<IWordsExtractor>().GetWords(text);
-            var filteredWords = Program.AppKernel.Get<IWordsFilter>().RemoveBadWords(words);
-            var tuples = Program.AppKernel.Get<IFrequencyCounter>().GetWordsFrequencies(filteredWords);
-            var fonts = Program.AppKernel.Get<IFontProcessor>().GetFonts(tuples, options);
-            System.Drawing.Bitmap image;
+            var fonts = GetFonts();
             try
             {
-                image = Program.AppKernel.Get<IAlgorithm>(options.AlgorithmName).GetBitmap(fonts, options);
+                System.Drawing.Bitmap image = Program.AppKernel.Get<IAlgorithm>(options.AlgorithmName).GetBitmap(fonts, options);
+                return image;
             }
             catch (ActivationException)
             {
                 throw new UnknownAlgorithmException();
             }
-            return image;
+        }
+
+        public IList<WordIntPair> GetFonts()
+        {
+            var text = Program.AppKernel.Get<IFileReader>().GetRawText(options.InputFile);
+            var words = Program.AppKernel.Get<IWordsExtractor>().GetWords(text);
+            var filteredWords = Program.AppKernel.Get<IWordsFilter>().RemoveBadWords(words);
+            var tuples = Program.AppKernel.Get<IFrequencyCounter>().GetOrderedWordsFrequencies(filteredWords);
+            var fonts = Program.AppKernel.Get<IFontProcessor>().GetFonts(tuples, options);
+            return fonts;
         }
     }
 }

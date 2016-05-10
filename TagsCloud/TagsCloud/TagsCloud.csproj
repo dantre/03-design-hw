@@ -60,6 +60,7 @@
     <Compile Include="Data\Readers\IFileReader.cs" />
     <Compile Include="Data\Frequencies\IFrequencyCounter.cs" />
     <Compile Include="Data\Font\IFontProcessor.cs" />
+    <Compile Include="Data\WordIntPair.cs" />
     <Compile Include="Data\WordsExtractors\IWordsExtractor.cs" />
     <Compile Include="Data\Filters\IWordsFilter.cs" />
     <Compile Include="Bitmap\BitmapMethods.cs" />

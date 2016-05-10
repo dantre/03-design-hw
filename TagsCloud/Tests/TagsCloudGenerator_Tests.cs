@@ -5,6 +5,7 @@ using NUnit.Framework;
 using TagsCloud;
 using TagsCloud.Data.Readers;
 using TagsCloud.NInject;
+using TagsCloud.Options;
 
 namespace Tests
 {
@@ -41,7 +42,7 @@ namespace Tests
         public void Generate_should_return_bitmap()
         {
             var bitmap = generator.Generate();
-            Assert.AreEqual(typeof(Bitmap), bitmap.GetType());
+            Assert.AreEqual(typeof(System.Drawing.Bitmap), bitmap.GetType());
         }
 
         [Test]

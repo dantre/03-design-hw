@@ -2,24 +2,25 @@
 using System.Collections.Generic;
 using System.Drawing;
 using NUnit.Framework;
-using TagsCloud;
 using TagsCloud.Bitmap.Algorithms;
+using TagsCloud.Data;
+using TagsCloud.Options;
 
-namespace Tests.Concrete
+namespace Tests.Bitmap
 {
     [TestFixture]
     class ColumnsAlgorithm_Tests
     {
-        public List<Tuple<string, int>> fonts;
+        public List<WordIntPair> fonts;
         public InputOptions options;
         public IAlgorithm algorithm;
 
         [SetUp]
         public void Init()
         {
-            fonts = new List<Tuple<string, int>>
+            fonts = new List<WordIntPair>
             {
-                Tuple.Create("a", 10)
+                new WordIntPair("a", 3)
             };
             options = new InputOptions
             {
@@ -39,7 +40,7 @@ namespace Tests.Concrete
         {
             var result = algorithm.GetBitmap(fonts, options);
 
-            Assert.AreEqual(typeof(Bitmap), result.GetType());
+            Assert.AreEqual(typeof(System.Drawing.Bitmap), result.GetType());
         }
 
         [Test]

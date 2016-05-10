@@ -1,10 +1,11 @@
 using System;
 using System.Collections.Generic;
+using TagsCloud.Options;
 
 namespace TagsCloud.Data.Font
 {
     public interface IFontProcessor
     {
-        IEnumerable<Tuple<string, int>> GetFonts(Tuple<string, int>[] words, InputOptions options);
+        IList<WordIntPair> GetFonts(IList<WordIntPair> wordsAndFreqs, InputOptions options);
     }
 }

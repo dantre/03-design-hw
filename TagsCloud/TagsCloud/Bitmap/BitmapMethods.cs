@@ -5,15 +5,17 @@ using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.Drawing.Text;
 using System.Linq;
+using TagsCloud.Data;
+using TagsCloud.Options;
 
 namespace TagsCloud.Bitmap
 {
     public static class BitmapMethods
     {
-        public static IEnumerable<System.Drawing.Bitmap> GetTextImages(IEnumerable<Tuple<string, int>> fonts, InputOptions options)
+        public static IEnumerable<System.Drawing.Bitmap> GetTextImages(IList<WordIntPair> fonts, InputOptions options)
         {
             var mixedFonts = fonts.OrderBy(e => Guid.NewGuid());
-            return mixedFonts.Select(tuple => CreateBitmapImage(tuple.Item1, tuple.Item2, options));
+            return mixedFonts.Select(tuple => CreateBitmapImage(tuple.Word, tuple.Number, options));
         }
 
         public static System.Drawing.Bitmap CreateBitmapImage(string text, int size, InputOptions options)

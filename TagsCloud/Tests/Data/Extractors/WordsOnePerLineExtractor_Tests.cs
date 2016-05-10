@@ -2,7 +2,7 @@ using System.Linq;
 using NUnit.Framework;
 using TagsCloud.Data.WordsExtractors;
 
-namespace Tests.Concrete
+namespace Tests.Data.Extractors
 {
     [TestFixture]
     public class WordsOnePerLineExtractor_Tests

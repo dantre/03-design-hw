@@ -1,7 +1,7 @@
 ﻿using CommandLine;
 using CommandLine.Text;
 
-namespace TagsCloud
+namespace TagsCloud.Options
 {
     public class InputOptions
     {

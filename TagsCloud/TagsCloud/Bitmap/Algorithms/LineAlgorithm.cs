@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using TagsCloud.Data;
+using TagsCloud.Options;
 
 namespace TagsCloud.Bitmap.Algorithms
 {
     public class LineAlgorithm : IAlgorithm
     {
-        public System.Drawing.Bitmap GetBitmap(IEnumerable<Tuple<string, int>> fonts, InputOptions options)
+        public System.Drawing.Bitmap GetBitmap(IList<WordIntPair> fonts, InputOptions options)
         {
             var textImages = BitmapMethods.GetTextImages(fonts, options).ToList();
             int maxHeight = textImages.Max(i => i.Height);

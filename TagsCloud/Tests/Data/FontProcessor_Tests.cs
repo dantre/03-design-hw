@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Linq;
 using NUnit.Framework;
-using TagsCloud;
 using TagsCloud.Data.Font;
+using TagsCloud.Options;
 
-namespace Tests.Concrete
+namespace Tests.Data
 {
     [TestFixture]
     public class FontProcessor_Tests

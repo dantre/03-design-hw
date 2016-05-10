@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace TagsCloud.Options
 {
-    class InputOptionsValidator
+    public static class InputOptionsValidator
     {
+        
+        public static bool IsValid(InputOptions options)
+        {
+            return true;
+        }
     }
 }

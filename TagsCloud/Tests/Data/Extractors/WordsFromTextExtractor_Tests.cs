@@ -2,7 +2,7 @@ using System.Linq;
 using NUnit.Framework;
 using TagsCloud.Data.WordsExtractors;
 
-namespace Tests.Concrete
+namespace Tests.Data.Extractors
 {
     [TestFixture]
     public class WordsFromTextExtractor_Tests
@@ -20,7 +20,7 @@ namespace Tests.Concrete
         }
 
         [Test]
-        public void GetWords_on_text_4_words_gives_4_words()
+        public void GetWords_on_text_with_4_different_words_gives_4_words()
         {
             var wordsExtractor = new WordsFromTextExtractor();
             string data = @"A B A C";
