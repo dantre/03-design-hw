@@ -72,9 +72,10 @@
     <Compile Include="Data\WordsExtractors\WordsFromTextExtractor.cs" />
     <Compile Include="Data\WordsExtractors\WordsOnePerLineExtractor.cs" />
     <Compile Include="ConsoleProgram.cs" />
+    <Compile Include="Options\InputOptionsValidator.cs" />
     <Compile Include="TagsCloudGenerator.cs" />
     <Compile Include="NInject\BindingModule.cs" />
-    <Compile Include="InputOptions.cs" />
+    <Compile Include="Options\InputOptions.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

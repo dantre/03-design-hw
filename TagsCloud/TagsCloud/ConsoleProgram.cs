@@ -3,7 +3,6 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using CommandLine;
-using Ninject;
 
 namespace TagsCloud
 {
@@ -37,7 +36,16 @@ namespace TagsCloud
                     Console.WriteLine("Unknown algorithm");
                     return;
                 }
+                catch (ArgumentException)
+                {
+                    Console.WriteLine("Wrong arguments value");  
+                    return;
+                }
                 image.Save(options.OutputFile, ImageFormat.Png);
+            }
+            else
+            {
+                Console.WriteLine("Wrong arguments type");
             }
         }
     }

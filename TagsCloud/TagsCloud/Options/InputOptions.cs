@@ -13,7 +13,7 @@ namespace TagsCloud
 
         [Option("minFont", DefaultValue = 20, HelpText = "Minimum font size.")]
         public int MinFont { get; set; }
-
+            
         [Option("maxFont", DefaultValue = 40, HelpText = "Maximum font size.")]
         public int MaxFont { get; set; }
 

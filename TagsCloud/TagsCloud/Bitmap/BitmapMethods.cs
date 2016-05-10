@@ -19,7 +19,6 @@ namespace TagsCloud.Bitmap
         public static System.Drawing.Bitmap CreateBitmapImage(string text, int size, InputOptions options)
         {
             System.Drawing.Bitmap objBmpImage = new System.Drawing.Bitmap(1, 1);
-
             Font objFont = new Font(options.FontName, size, FontStyle.Bold, GraphicsUnit.Pixel);
             Graphics objGraphics = Graphics.FromImage(objBmpImage);
 
@@ -69,7 +68,6 @@ namespace TagsCloud.Bitmap
                     graphics.DrawImage(image, destRect, 0, 0, image.Width, image.Height, GraphicsUnit.Pixel, wrapMode);
                 }
             }
-
             return destImage;
         }
     }
