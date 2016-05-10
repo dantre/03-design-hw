@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using TagsCloud.Abstract;
 
-namespace TagsCloud.Concrete
+namespace TagsCloud.Data.Font
 {
     public class FontProcessor : IFontProcessor
     {
-        public IEnumerable<Tuple<string, int>> GetFonts(Tuple<string, int>[] words, Options options)
+        public IEnumerable<Tuple<string, int>> GetFonts(Tuple<string, int>[] words, InputOptions options)
         {
             int minCount = words.Min(t => t.Item2);
             int maxCount = words.Max(t => t.Item2);

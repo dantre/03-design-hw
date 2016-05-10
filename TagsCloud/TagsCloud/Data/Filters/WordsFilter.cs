@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using TagsCloud.Abstract;
 
-namespace TagsCloud.Concrete
+namespace TagsCloud.Data.Filters
 {
     public class WordsFilter : IWordsFilter
     {
@@ -10,12 +9,12 @@ namespace TagsCloud.Concrete
 
         public IEnumerable<string> RemoveBadWords(IEnumerable<string> words)
         {
-            return words.Where(IsValid);
+            return words.Where(IsValidWord);
         }
 
-        private bool IsValid(string arg)
+        private bool IsValidWord(string word)
         {
-            return !BadWords.Contains(arg);
+            return !BadWords.Contains(word);
         }
     }
 }

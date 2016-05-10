@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using NUnit.Framework;
 using TagsCloud;
-using TagsCloud.Abstract;
-using TagsCloud.Concrete.Algorithms;
+using TagsCloud.Bitmap.Algorithms;
 
 namespace Tests.Concrete
 {
@@ -12,7 +11,7 @@ namespace Tests.Concrete
     class LineAlgorithm_Tests
     {
         public List<Tuple<string, int>> fonts;
-        public Options options;
+        public InputOptions options;
         public IAlgorithm algorithm;
 
         [SetUp]
@@ -22,7 +21,7 @@ namespace Tests.Concrete
             {
                 Tuple.Create("a", 10)
             };
-            options = new Options
+            options = new InputOptions
             {
                 Width  = 100,
                 Height = 100,

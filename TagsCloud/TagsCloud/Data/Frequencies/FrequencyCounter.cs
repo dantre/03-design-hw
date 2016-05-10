@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using TagsCloud.Abstract;
 
-namespace TagsCloud.Concrete
+namespace TagsCloud.Data.Frequencies
 {
     public class FrequencyCounter: IFrequencyCounter
     {

@@ -1,7 +1,7 @@
 using NUnit.Framework;
-using TagsCloud.Concrete;
+using TagsCloud.Data.Filters;
 
-namespace Tests
+namespace Tests.Concrete
 {
     [TestFixture]
     public class WordsFilter_Tests

@@ -1,9 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
-using TagsCloud.Abstract;
 
-namespace TagsCloud.Concrete.WordsExtractors
+namespace TagsCloud.Data.WordsExtractors
 {
     public class WordsFromTextExtractor : IWordsExtractor
     {

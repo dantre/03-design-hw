@@ -3,11 +3,7 @@ using Ninject;
 using NSubstitute;
 using NUnit.Framework;
 using TagsCloud;
-using TagsCloud.Abstract;
-using TagsCloud.Concrete;
-using TagsCloud.Concrete.Algorithms;
-using TagsCloud.Concrete.WordsExtractors;
-using TagsCloud.Generators;
+using TagsCloud.Data.Readers;
 using TagsCloud.NInject;
 
 namespace Tests
@@ -15,12 +11,12 @@ namespace Tests
     [TestFixture]
     class TagsCloudGenerator_Tests
     {
-        private Options options;
+        private InputOptions options;
         private TagsCloudGenerator generator;
         [SetUp]
         public void Init()
         {
-            options = new Options
+            options = new InputOptions
             {
                 Width = 100,
                 Height = 100,
@@ -33,7 +29,7 @@ namespace Tests
                 OutputFile = "result.png",
                 AlgorithmName = "Column"
             };
-            Program.AppKernel = new StandardKernel(new BasicModule());
+            Program.AppKernel = new StandardKernel(new BindingModule());
             var reader = Substitute.For<IFileReader>();
             reader.GetRawText("test").Returns("test text");
             Program.AppKernel.Unbind<IFileReader>();

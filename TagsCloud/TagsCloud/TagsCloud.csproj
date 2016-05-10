@@ -56,25 +56,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Abstract\IAlgorithm.cs" />
-    <Compile Include="Abstract\IFileReader.cs" />
-    <Compile Include="Abstract\IFrequencyCounter.cs" />
-    <Compile Include="Abstract\IFontProcessor.cs" />
-    <Compile Include="Abstract\IWordsExtractor.cs" />
-    <Compile Include="Abstract\IWordsFilter.cs" />
-    <Compile Include="BitmapMethods.cs" />
-    <Compile Include="Concrete\Algorithms\ColumnsAlgorithm.cs" />
-    <Compile Include="Concrete\Algorithms\LineAlgorithm.cs" />
-    <Compile Include="Concrete\FrequencyCounter.cs" />
-    <Compile Include="Concrete\WordsFilter.cs" />
-    <Compile Include="Concrete\FontProcessor.cs" />
-    <Compile Include="Concrete\TxtReader.cs" />
-    <Compile Include="Concrete\WordsExtractors\WordsFromTextExtractor.cs" />
-    <Compile Include="Concrete\WordsExtractors\WordsOnePerLineExtractor.cs" />
+    <Compile Include="Bitmap\Algorithms\IAlgorithm.cs" />
+    <Compile Include="Data\Readers\IFileReader.cs" />
+    <Compile Include="Data\Frequencies\IFrequencyCounter.cs" />
+    <Compile Include="Data\Font\IFontProcessor.cs" />
+    <Compile Include="Data\WordsExtractors\IWordsExtractor.cs" />
+    <Compile Include="Data\Filters\IWordsFilter.cs" />
+    <Compile Include="Bitmap\BitmapMethods.cs" />
+    <Compile Include="Bitmap\Algorithms\ColumnsAlgorithm.cs" />
+    <Compile Include="Bitmap\Algorithms\LineAlgorithm.cs" />
+    <Compile Include="Data\Frequencies\FrequencyCounter.cs" />
+    <Compile Include="Data\Filters\WordsFilter.cs" />
+    <Compile Include="Data\Font\FontProcessor.cs" />
+    <Compile Include="Data\Readers\TxtReader.cs" />
+    <Compile Include="Data\WordsExtractors\WordsFromTextExtractor.cs" />
+    <Compile Include="Data\WordsExtractors\WordsOnePerLineExtractor.cs" />
     <Compile Include="ConsoleProgram.cs" />
-    <Compile Include="Generators\TagsCloudGenerator.cs" />
-    <Compile Include="NInject\BasicModule.cs" />
-    <Compile Include="Options.cs" />
+    <Compile Include="TagsCloudGenerator.cs" />
+    <Compile Include="NInject\BindingModule.cs" />
+    <Compile Include="InputOptions.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -90,6 +90,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

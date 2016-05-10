@@ -6,29 +6,27 @@ using System.Drawing.Imaging;
 using System.Drawing.Text;
 using System.Linq;
 
-namespace TagsCloud
+namespace TagsCloud.Bitmap
 {
     public static class BitmapMethods
     {
-        public static IEnumerable<Bitmap> GetTextImages(IEnumerable<Tuple<string, int>> fonts, Options options)
+        public static IEnumerable<System.Drawing.Bitmap> GetTextImages(IEnumerable<Tuple<string, int>> fonts, InputOptions options)
         {
             var mixedFonts = fonts.OrderBy(e => Guid.NewGuid());
             return mixedFonts.Select(tuple => CreateBitmapImage(tuple.Item1, tuple.Item2, options));
         }
 
-        public static Bitmap CreateBitmapImage(string text, int size, Options options)
+        public static System.Drawing.Bitmap CreateBitmapImage(string text, int size, InputOptions options)
         {
-            Bitmap objBmpImage = new Bitmap(1, 1);
-            int intWidth = 0;
-            int intHeight = 0;
+            System.Drawing.Bitmap objBmpImage = new System.Drawing.Bitmap(1, 1);
 
             Font objFont = new Font(options.FontName, size, FontStyle.Bold, GraphicsUnit.Pixel);
             Graphics objGraphics = Graphics.FromImage(objBmpImage);
 
-            intWidth = (int)objGraphics.MeasureString(text, objFont).Width;
-            intHeight = (int)objGraphics.MeasureString(text, objFont).Height;
+            int width = (int)objGraphics.MeasureString(text, objFont).Width;
+            int height = (int)objGraphics.MeasureString(text, objFont).Height;
 
-            objBmpImage = new Bitmap(objBmpImage, new Size(intWidth, intHeight));
+            objBmpImage = new System.Drawing.Bitmap(objBmpImage, new Size(width, height));
 
             objGraphics = Graphics.FromImage(objBmpImage);
 
@@ -41,7 +39,7 @@ namespace TagsCloud
             return (objBmpImage);
         }
 
-        public static Bitmap CopyRegionIntoImage(Bitmap srcBitmap, Rectangle srcRegion, Bitmap destBitmap, Rectangle destRegion)
+        public static System.Drawing.Bitmap CopyRegionIntoImage(System.Drawing.Bitmap srcBitmap, Rectangle srcRegion, System.Drawing.Bitmap destBitmap, Rectangle destRegion)
         {
             using (Graphics graphics = Graphics.FromImage(destBitmap))
             {
@@ -50,10 +48,10 @@ namespace TagsCloud
             return destBitmap;
         }
 
-        public static Bitmap ResizeImage(Image image, int width, int height)
+        public static System.Drawing.Bitmap ResizeImage(Image image, int width, int height)
         {
             var destRect = new Rectangle(0, 0, width, height);
-            var destImage = new Bitmap(width, height);
+            var destImage = new System.Drawing.Bitmap(width, height);
 
             destImage.SetResolution(image.HorizontalResolution, image.VerticalResolution);
 

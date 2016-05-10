@@ -1,7 +1,6 @@
 ﻿using System.IO;
-using TagsCloud.Abstract;
 
-namespace TagsCloud.Concrete
+namespace TagsCloud.Data.Readers
 {
     public class TxtReader : IFileReader
     {

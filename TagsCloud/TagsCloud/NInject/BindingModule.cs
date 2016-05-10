@@ -1,12 +1,14 @@
 ﻿using Ninject.Modules;
-using TagsCloud.Abstract;
-using TagsCloud.Concrete;
-using TagsCloud.Concrete.Algorithms;
-using TagsCloud.Concrete.WordsExtractors;
+using TagsCloud.Bitmap.Algorithms;
+using TagsCloud.Data.Filters;
+using TagsCloud.Data.Font;
+using TagsCloud.Data.Frequencies;
+using TagsCloud.Data.Readers;
+using TagsCloud.Data.WordsExtractors;
 
 namespace TagsCloud.NInject
 {
-    public class BasicModule : NinjectModule
+    public class BindingModule : NinjectModule
     {
         public override void Load()
         {

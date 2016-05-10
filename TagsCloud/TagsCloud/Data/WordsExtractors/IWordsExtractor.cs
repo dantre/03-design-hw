@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace TagsCloud.Abstract
+namespace TagsCloud.Data.WordsExtractors
 {
     public interface IWordsExtractor
     {

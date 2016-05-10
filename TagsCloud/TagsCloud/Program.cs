@@ -9,7 +9,7 @@ namespace TagsCloud
       
         private static void Main(string[] args)
         {
-            AppKernel = new StandardKernel(new BasicModule());
+            AppKernel = new StandardKernel(new BindingModule());
             var console = new ConsoleProgram(args);
             console.Run();
         }

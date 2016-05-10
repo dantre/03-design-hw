@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace TagsCloud.Abstract
+namespace TagsCloud.Data.Frequencies
 {
     public interface IFrequencyCounter
     {

@@ -3,7 +3,7 @@ using CommandLine.Text;
 
 namespace TagsCloud
 {
-    public class Options
+    public class InputOptions
     {
         [Option('i', "input", Required = true, HelpText = "Input file.")]
         public string InputFile { get; set; }

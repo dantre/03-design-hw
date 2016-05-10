@@ -1,8 +1,8 @@
 using System;
 using NUnit.Framework;
-using TagsCloud.Concrete;
+using TagsCloud.Data.Frequencies;
 
-namespace Tests
+namespace Tests.Concrete
 {
     [TestFixture]
     public class FrequencyCounter_Tests
