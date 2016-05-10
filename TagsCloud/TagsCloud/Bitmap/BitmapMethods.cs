@@ -28,16 +28,19 @@ namespace TagsCloud.Bitmap
             int height = (int)objGraphics.MeasureString(text, objFont).Height;
 
             objBmpImage = new System.Drawing.Bitmap(objBmpImage, new Size(width, height));
+            DrawTextOnBitmap(objBmpImage, objGraphics, text, objFont, options);
 
+            return (objBmpImage);
+        }
+
+        private static void DrawTextOnBitmap(System.Drawing.Bitmap objBmpImage, Graphics objGraphics, string text, Font objFont, InputOptions options)
+        {
             objGraphics = Graphics.FromImage(objBmpImage);
-
             objGraphics.Clear(ColorTranslator.FromHtml(options.BackgroundColor));
             objGraphics.SmoothingMode = SmoothingMode.AntiAlias;
             objGraphics.TextRenderingHint = TextRenderingHint.AntiAlias;
             objGraphics.DrawString(text, objFont, new SolidBrush(ColorTranslator.FromHtml(options.TextColor)), 0, 0);
             objGraphics.Flush();
-
-            return (objBmpImage);
         }
 
         public static System.Drawing.Bitmap CopyRegionIntoImage(System.Drawing.Bitmap srcBitmap, Rectangle srcRegion, System.Drawing.Bitmap destBitmap, Rectangle destRegion)

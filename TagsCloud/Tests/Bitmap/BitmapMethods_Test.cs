@@ -9,13 +9,19 @@ namespace Tests.Bitmap
     public class BitmapMethods_Test
     {
         [TestMethod]
-        public void Resize_should_resize_pixel_to_square()
+        public void Resize_from_1x1_to_200x100_should_return_bitmap_with_width_200()
         {
             var image = new System.Drawing.Bitmap(1,1);
+            var result = BitmapMethods.ResizeImage(image, 200, 100);
+            Assert.AreEqual(200, result.Width);
+        }
 
-            var result = BitmapMethods.ResizeImage(image, 20, 20);
-            Assert.AreEqual(20, result.Height);
-            Assert.AreEqual(20, result.Width);
+        [TestMethod]
+        public void Resize_from_1x1_to_200x100_should_return_bitmap_with_height_100()
+        {
+            var image = new System.Drawing.Bitmap(1, 1);
+            var result = BitmapMethods.ResizeImage(image, 200, 100);
+            Assert.AreEqual(100, result.Height);
         }
 
         [TestMethod]

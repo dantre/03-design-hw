@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Drawing;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TagsCloud.Bitmap.Algorithms;
@@ -19,7 +20,8 @@ namespace Tests.Bitmap
         {
             fonts = new List<WordIntPair>
             {
-                new WordIntPair("a", 3)
+                new WordIntPair("some", 3),
+                new WordIntPair("Text", 10)
             };
             options = new InputOptions
             {
@@ -33,15 +35,7 @@ namespace Tests.Bitmap
             };
             algorithm = new ColumnsAlgorithm();
         }
-
-        [TestMethod]
-        public void GetBitmap_should_return_bitmap()
-        {
-            var result = algorithm.GetBitmap(fonts, options);
-
-            Assert.AreEqual(typeof(System.Drawing.Bitmap), result.GetType());
-        }
-
+        
         [TestMethod]
         public void GetBitmap_should_return_bitmap_with_width_eq_100()
         {
@@ -59,10 +53,9 @@ namespace Tests.Bitmap
         }
 
         [TestMethod]
-        public void ColumnsAlgorithm_GetBitmap_should_return_first_pixel_in_background_color()
+        public void GetBitmap_on_backgroundColor_Red_should_return_bitmap_with_first_pixel_Red()
         {
             var result = algorithm.GetBitmap(fonts, options);
-
             Assert.AreEqual(Color.FromArgb(255, 255, 0, 0), result.GetPixel(0, 0));
         }
     }
