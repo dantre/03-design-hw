@@ -12,7 +12,7 @@ using TagsCloud.Options;
 namespace Tests
 {
     [TestClass]
-    class TagsCloudGenerator_Tests
+    public class TagsCloudGenerator_Tests
     {
         private InputOptions options;
         private TagsCloudGenerator generator;

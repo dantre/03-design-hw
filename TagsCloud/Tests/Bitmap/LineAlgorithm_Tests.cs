@@ -9,7 +9,7 @@ using TagsCloud.Options;
 namespace Tests.Bitmap
 {
     [TestClass]
-    class LineAlgorithm_Tests
+    public class LineAlgorithm_Tests
     {
         public List<WordIntPair> fonts;
         public InputOptions options;

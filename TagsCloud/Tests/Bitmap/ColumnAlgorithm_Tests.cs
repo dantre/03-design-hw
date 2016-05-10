@@ -8,7 +8,7 @@ using TagsCloud.Options;
 namespace Tests.Bitmap
 {
     [TestClass]
-    class ColumnsAlgorithm_Tests
+    public class ColumnsAlgorithm_Tests
     {
         public List<WordIntPair> fonts;
         public InputOptions options;
