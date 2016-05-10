@@ -33,5 +33,28 @@ namespace Tests.Data
 
             CollectionAssert.AreEqual(expected, result);
         }
+
+        [TestMethod]
+        public void GetFonts_on_equal_freqs_should_return_equal_fonts_sizes()
+        {
+            var proc = new FontProcessor();
+            var data = new List<WordIntPair>
+            {
+                new WordIntPair("A", 10),
+                new WordIntPair("B", 10),
+                new WordIntPair("C", 10)
+            };
+            var settings = new InputOptions { MinFont = 20, MaxFont = 20 };
+            var expected = new List<WordIntPair>
+            {
+                new WordIntPair("A", 20),
+                new WordIntPair("B", 20),
+                new WordIntPair("C", 20)
+            };
+
+            var result = proc.GetFontSizes(data, settings).ToList();
+
+            CollectionAssert.AreEqual(expected, result);
+        }
     }
 }

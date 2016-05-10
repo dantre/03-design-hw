@@ -11,8 +11,6 @@ namespace TagsCloud.Bitmap.Algorithms
     {
         private int countLines;
         private int lineWidth;
-        private int maxHeight;
-        private int sumWidth;
 
         public override System.Drawing.Bitmap GetBitmap(IList<WordIntPair> fonts, InputOptions options)
         {

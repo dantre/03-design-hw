@@ -11,6 +11,9 @@ namespace TagsCloud.Bitmap.Algorithms
 {
     public abstract class BaseAlgorithm : IAlgorithm
     {
+        protected int maxHeight;
+        protected int sumWidth;
+
         public abstract System.Drawing.Bitmap GetBitmap(IList<WordIntPair> fonts, InputOptions options);
 
         protected void FillBackgroundColor(System.Drawing.Bitmap resultImage, string backgroundColor)

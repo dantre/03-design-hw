@@ -42,13 +42,5 @@ namespace Tests.Bitmap
                 new Rectangle(0, 0, 20, 20));
             Assert.AreEqual(Color.FromArgb(255,0,0,0), destImage.GetPixel(0,0));
         }
-
-        [TestMethod]
-        public void CreateBitmapImage_chould_create_bitmap()
-        {
-            var result = BitmapMethods.CreateBitmapImage("some text", 20, new InputOptions {FontName = "Arial", TextColor = "Red", BackgroundColor = "Green"});
-
-            Assert.AreEqual(typeof(System.Drawing.Bitmap), result.GetType());
-        }
     }
 }

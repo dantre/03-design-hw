@@ -8,14 +8,10 @@ namespace TagsCloud.Bitmap.Algorithms
 {
     public class LineAlgorithm : BaseAlgorithm
     {
-        private int maxHeight;
-        private int sumWidth;
-
         public override System.Drawing.Bitmap GetBitmap(IList<WordIntPair> fonts, InputOptions options)
         {
             var textImages = BitmapMethods.GetTextImages(fonts, options).ToList();
             CountVariables(textImages);
-
             var resultImage = new System.Drawing.Bitmap( sumWidth, maxHeight);
             FillBackgroundColor(resultImage, options.BackgroundColor);
             FillImagesWithWordsImages(resultImage, textImages);
