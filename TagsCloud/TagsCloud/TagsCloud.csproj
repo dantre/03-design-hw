@@ -71,7 +71,7 @@
     <Compile Include="Data\WordsExtractors\WordsOnePerLineExtractor.cs" />
     <Compile Include="ConsoleProgram.cs" />
     <Compile Include="Options\InputOptionsValidator.cs" />
-    <Compile Include="Generator\TagsCloudGenerator.cs" />
+    <Compile Include="Generator\TagCloudGenerator.cs" />
     <Compile Include="NInject\BindingModule.cs" />
     <Compile Include="Options\InputOptions.cs" />
     <Compile Include="Program.cs" />

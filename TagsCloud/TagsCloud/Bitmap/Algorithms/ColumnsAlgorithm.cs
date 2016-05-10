@@ -20,7 +20,7 @@ namespace TagsCloud.Bitmap.Algorithms
 
             var resultImage = new System.Drawing.Bitmap(lineWidth + 100, maxHeight * countLines);
             var objGraphics = Graphics.FromImage(resultImage);
-            objGraphics.Clear(Color.FromName(options.BackgroundColor));
+            objGraphics.Clear(ColorTranslator.FromHtml(options.BackgroundColor));
             objGraphics.Flush();
 
             int x = 0;

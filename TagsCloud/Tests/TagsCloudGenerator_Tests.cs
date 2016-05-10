@@ -15,7 +15,7 @@ namespace Tests
     public class TagsCloudGenerator_Tests
     {
         private InputOptions options;
-        private TagsCloudGenerator generator;
+        private TagCloudGenerator generator;
         [TestInitialize]
         public void Init()
         {
@@ -37,7 +37,7 @@ namespace Tests
             reader.GetRawText("test").Returns("test text");
             Program.AppKernel.Unbind<IFileReader>();
             Program.AppKernel.Bind<IFileReader>().ToConstant(reader);
-            generator = new TagsCloudGenerator(options);
+            generator = new TagCloudGenerator(options);
         }
 
         [TestMethod]

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TagsCloud.Options;
 
 namespace Tests.Options
@@ -19,7 +14,6 @@ namespace Tests.Options
             options = new InputOptions();
             validator = new InputOptionsValidator(options);
         }
-
 
         [TestMethod]
         public void IsParameterInSegment_on_20_between_10_and_30_should_return_true()

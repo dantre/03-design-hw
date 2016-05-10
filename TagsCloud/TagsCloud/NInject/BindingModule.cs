@@ -5,6 +5,7 @@ using TagsCloud.Data.Font;
 using TagsCloud.Data.Frequencies;
 using TagsCloud.Data.Readers;
 using TagsCloud.Data.WordsExtractors;
+using TagsCloud.Options;
 
 namespace TagsCloud.NInject
 {
@@ -19,6 +20,7 @@ namespace TagsCloud.NInject
             Bind<IFontProcessor>().To<FontProcessor>();
             Bind<IAlgorithm>().To<ColumnsAlgorithm>().Named("Column");
             Bind<IAlgorithm>().To<LineAlgorithm>().Named("Line");
+            Bind<IOptionsValidator>().To<InputOptionsValidator>();
         }
     }
 }

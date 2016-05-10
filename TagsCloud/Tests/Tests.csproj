@@ -71,7 +71,7 @@
   <ItemGroup>
     <Compile Include="Bitmap\BitmapMethods_Test.cs" />
     <Compile Include="Bitmap\ColumnAlgorithm_Tests.cs" />
-    <Compile Include="Bitmap\ColorExtension_Tests.cs" />
+    <Compile Include="Bitmap\ColorChecker_Tests.cs" />
     <Compile Include="Data\FontProcessor_Tests.cs" />
     <Compile Include="Data\FrequencyCounter_Tests.cs" />
     <Compile Include="Bitmap\LineAlgorithm_Tests.cs" />

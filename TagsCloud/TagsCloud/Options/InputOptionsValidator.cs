@@ -9,9 +9,10 @@ namespace TagsCloud.Options
 {
     public class InputOptionsValidator : IOptionsValidator
     {
-        private InputOptions Options { get; }
+        private InputOptions Options { get; set; }
         private readonly ColorChecker colorChecker = new ColorChecker();
         private readonly Dictionary<Func<bool>, string> RulesAndErrorMessages;
+        private readonly List<string> knownAlgorithms = new List<string> {"Column", "Line"};
 
         public InputOptionsValidator(InputOptions options)
         {
@@ -24,7 +25,8 @@ namespace TagsCloud.Options
                 { CheckMinFont, "Validation Error: Font size error" },
                 { CheckInputFile, "Validation Error: File doesn't exists" },
                 { CheckTextColor, "Validation Error: Cannot recognize this text color" },
-                { CheckBackgroundColor, "Validation Error: Cannot recognize background color"}
+                { CheckBackgroundColor, "Validation Error: Cannot recognize background color"},
+                { CheckAlgorithm, "Validation Error: Unknown Algorithm" }
             };
         }
 
@@ -41,10 +43,12 @@ namespace TagsCloud.Options
             message = "";
             return true;
         }
+
         public bool IsParameterInSegment(int value, int minValue, int maxValue)
         {
             return value >= minValue && value <= maxValue;
         }
+
         #region Options checks
         public bool CheckInputFile()
         {
@@ -78,7 +82,7 @@ namespace TagsCloud.Options
 
         public bool CheckAlgorithm()
         {
-            throw new NotImplementedException();
+            return knownAlgorithms.Contains(Options.AlgorithmName);
         }
 
         public bool CheckBackgroundColor()

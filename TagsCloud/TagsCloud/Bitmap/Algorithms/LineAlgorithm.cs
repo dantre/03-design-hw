@@ -15,7 +15,7 @@ namespace TagsCloud.Bitmap.Algorithms
             int sumWidth = textImages.Sum(i => i.Width);
             var resultImage = new System.Drawing.Bitmap( sumWidth, maxHeight);
             var objGraphics = Graphics.FromImage(resultImage);
-            objGraphics.Clear(Color.FromName(options.BackgroundColor));
+            objGraphics.Clear(ColorTranslator.FromHtml(options.BackgroundColor));
             objGraphics.Flush();
 
             int x = 0;

@@ -31,10 +31,10 @@ namespace TagsCloud.Bitmap
 
             objGraphics = Graphics.FromImage(objBmpImage);
 
-            objGraphics.Clear(Color.FromName(options.BackgroundColor));
+            objGraphics.Clear(ColorTranslator.FromHtml(options.BackgroundColor));
             objGraphics.SmoothingMode = SmoothingMode.AntiAlias;
             objGraphics.TextRenderingHint = TextRenderingHint.AntiAlias;
-            objGraphics.DrawString(text, objFont, new SolidBrush(Color.FromName(options.TextColor)), 0, 0);
+            objGraphics.DrawString(text, objFont, new SolidBrush(ColorTranslator.FromHtml(options.TextColor)), 0, 0);
             objGraphics.Flush();
 
             return (objBmpImage);

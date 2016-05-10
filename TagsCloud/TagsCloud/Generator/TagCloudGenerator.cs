@@ -11,11 +11,11 @@ using TagsCloud.Options;
 
 namespace TagsCloud.Generator
 {
-    public class TagsCloudGenerator
+    public class TagCloudGenerator
     {
         private readonly InputOptions options;
 
-        public TagsCloudGenerator(InputOptions options)
+        public TagCloudGenerator(InputOptions options)
         {
             this.options = options;
         }

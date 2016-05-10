@@ -11,6 +11,7 @@ namespace TagsCloud
     public class ConsoleProgram
     {
         private string[] args;
+        private IOptionsValidator Validator { get; set; }
 
         public ConsoleProgram(string[] args)
         {
@@ -25,15 +26,16 @@ namespace TagsCloud
                 Console.WriteLine("Command line parser error");
                 return;
             }
-
+            
+            Validator = new InputOptionsValidator(options);
             string message;
-            if (Program.AppKernel.Get<IOptionsValidator>().IsValid(out message))
+            if (!Validator.IsValid(out message))
             {
                 Console.WriteLine(message);
                 return;
             }
 
-            var generator = new TagsCloudGenerator(options);
+            var generator = new TagCloudGenerator(options);
             try
             {
                 Image image = generator.Generate();
