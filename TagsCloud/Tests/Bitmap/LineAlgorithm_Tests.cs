@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Drawing;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TagsCloud.Bitmap.Algorithms;
@@ -53,8 +52,7 @@ namespace Tests.Bitmap
             Assert.AreEqual(result.Height, 100);
         }
         
-
-        [TestMethod]
+         [TestMethod]
         public void GetBitmap_on_backgroundColor_Red_should_return_bitmap_with_first_pixel_Red()
         {
             var result = algorithm.GetBitmap(fonts, options);

@@ -91,7 +91,7 @@ namespace TagsCloud.Options
         #endregion
     }
 
-    internal interface IOptionsValidator
+    public interface IOptionsValidator
     {
         bool IsValid(out string message);
         bool CheckInputFile();

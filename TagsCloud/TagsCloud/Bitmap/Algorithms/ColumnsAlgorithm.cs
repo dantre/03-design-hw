@@ -7,21 +7,23 @@ using TagsCloud.Options;
 
 namespace TagsCloud.Bitmap.Algorithms
 {
-    public class ColumnsAlgorithm : IAlgorithm
+    public class ColumnsAlgorithm : BaseAlgorithm
     {
-        public System.Drawing.Bitmap GetBitmap(IList<WordIntPair> fonts, InputOptions options)
+        private int countLines;
+        private int lineWidth;
+
+        public override System.Drawing.Bitmap GetBitmap(IList<WordIntPair> fonts, InputOptions options)
         {
             var textImages = BitmapMethods.GetTextImages(fonts, options).ToList();
             int maxHeight = textImages.Max(i => i.Height);
             int sumWidth = textImages.Sum(i => i.Width);
 
-            int countLines = Math.Max(5, sumWidth / 1024);
-            int lineWidth = sumWidth / countLines;
+            countLines = (int) Math.Max(5, sumWidth / 1024);
+            lineWidth = sumWidth / countLines;
 
             var resultImage = new System.Drawing.Bitmap(lineWidth + 100, maxHeight * countLines);
-            var objGraphics = Graphics.FromImage(resultImage);
-            objGraphics.Clear(ColorTranslator.FromHtml(options.BackgroundColor));
-            objGraphics.Flush();
+
+            FillBackgroundColor(resultImage, options.BackgroundColor);
 
             int x = 0;
             int yAddition = 0;

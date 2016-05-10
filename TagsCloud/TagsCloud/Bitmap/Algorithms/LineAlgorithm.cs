@@ -6,17 +6,16 @@ using TagsCloud.Options;
 
 namespace TagsCloud.Bitmap.Algorithms
 {
-    public class LineAlgorithm : IAlgorithm
+    public class LineAlgorithm : BaseAlgorithm
     {
-        public System.Drawing.Bitmap GetBitmap(IList<WordIntPair> fonts, InputOptions options)
+        public override System.Drawing.Bitmap GetBitmap(IList<WordIntPair> fonts, InputOptions options)
         {
             var textImages = BitmapMethods.GetTextImages(fonts, options).ToList();
             int maxHeight = textImages.Max(i => i.Height);
             int sumWidth = textImages.Sum(i => i.Width);
             var resultImage = new System.Drawing.Bitmap( sumWidth, maxHeight);
-            var objGraphics = Graphics.FromImage(resultImage);
-            objGraphics.Clear(ColorTranslator.FromHtml(options.BackgroundColor));
-            objGraphics.Flush();
+
+            FillBackgroundColor(resultImage, options.BackgroundColor);
 
             int x = 0;
             foreach (var image in textImages)

@@ -52,6 +52,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Bitmap\Algorithms\BaseAlgorithm.cs" />
     <Compile Include="Bitmap\Algorithms\IAlgorithm.cs" />
     <Compile Include="Bitmap\ColorChecker.cs" />
     <Compile Include="Data\Readers\IFileReader.cs" />
