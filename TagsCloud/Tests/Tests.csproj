@@ -62,7 +62,9 @@
     </When>
     <Otherwise>
       <ItemGroup>
-        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework" />
+        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework">
+          <Private>False</Private>
+        </Reference>
       </ItemGroup>
     </Otherwise>
   </Choose>
@@ -77,6 +79,7 @@
     <Compile Include="Data\WordsFilter_Tests.cs" />
     <Compile Include="Data\Extractors\WordsFromTextExtractor_Tests.cs" />
     <Compile Include="TagsCloudGenerator_Tests.cs" />
+    <Compile Include="UnitTest1.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

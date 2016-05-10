@@ -1,15 +1,16 @@
 using System;
 using System.Collections.Generic;
-using NUnit.Framework;
+using System.Linq;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TagsCloud.Data;
 using TagsCloud.Data.Frequencies;
 
 namespace Tests.Data
 {
-    [TestFixture]
+    [TestClass]
     public class FrequencyCounter_Tests
     {
-        [Test]
+        [TestMethod]
         public void GetWordFrequencies_on_array_abcaab_should_return_3_WordIntPairs()
         {
             var proc = new FrequencyCounter();
@@ -17,7 +18,7 @@ namespace Tests.Data
             var result = proc.GetOrderedWordsFrequencies(data);
             Assert.AreEqual(3, result.Count);
         }
-        [Test]
+        [TestMethod]
         public void GetWordFrequencies_on_array_abcaab_should_return_a3_b2_c1()
         {
             var proc = new FrequencyCounter();
@@ -29,7 +30,7 @@ namespace Tests.Data
                 new WordIntPair("c", 1)
             };
             var result = proc.GetOrderedWordsFrequencies(data);
-            CollectionAssert.AreEqual(expected, result);
+            CollectionAssert.AreEqual(expected, result.ToList());
         }
     }
 }

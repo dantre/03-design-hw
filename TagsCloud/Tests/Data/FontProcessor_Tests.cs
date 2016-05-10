@@ -1,15 +1,15 @@
 ﻿using System;
 using System.Linq;
-using NUnit.Framework;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TagsCloud.Data.Font;
 using TagsCloud.Options;
 
 namespace Tests.Data
 {
-    [TestFixture]
+    [TestClass]
     public class FontProcessor_Tests
     {
-        [Test]
+        [TestMethod]
         public void GetFonts_on_different_freqs_should_give_different_fonts()
         {
             var proc = new FontProcessor();

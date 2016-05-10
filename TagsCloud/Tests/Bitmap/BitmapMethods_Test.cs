@@ -1,14 +1,14 @@
 using System.Drawing;
-using NUnit.Framework;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TagsCloud.Bitmap;
 using TagsCloud.Options;
 
 namespace Tests.Bitmap
 {
-    [TestFixture]
+    [TestClass]
     public class BitmapMethods_Test
     {
-        [Test]
+        [TestMethod]
         public void Resize_should_resize_pixel_to_square()
         {
             var image = new System.Drawing.Bitmap(1,1);
@@ -18,7 +18,7 @@ namespace Tests.Bitmap
             Assert.AreEqual(20, result.Width);
         }
 
-        [Test]
+        [TestMethod]
         public void CopyRegionIntoImage_should_copy_white_image_to_black_image()
         {
             var sourceImage = new System.Drawing.Bitmap(20, 20);
@@ -37,7 +37,7 @@ namespace Tests.Bitmap
             Assert.AreEqual(Color.FromArgb(255,0,0,0), destImage.GetPixel(0,0));
         }
 
-        [Test]
+        [TestMethod]
         public void CreateBitmapImage_chould_create_bitmap()
         {
             var result = BitmapMethods.CreateBitmapImage("some text", 20, new InputOptions {FontName = "Arial", TextColor = "Red", BackgroundColor = "Green"});

@@ -5,6 +5,7 @@ using TagsCloud.Data.Font;
 using TagsCloud.Data.Frequencies;
 using TagsCloud.Data.Readers;
 using TagsCloud.Data.WordsExtractors;
+using TagsCloud.Options;
 
 namespace TagsCloud.NInject
 {

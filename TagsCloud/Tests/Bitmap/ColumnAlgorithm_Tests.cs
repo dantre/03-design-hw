@@ -1,21 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
-using NUnit.Framework;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+
 using TagsCloud.Bitmap.Algorithms;
 using TagsCloud.Data;
 using TagsCloud.Options;
+using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
 namespace Tests.Bitmap
 {
-    [TestFixture]
+    [TestClass]
     class ColumnsAlgorithm_Tests
     {
         public List<WordIntPair> fonts;
         public InputOptions options;
         public IAlgorithm algorithm;
 
-        [SetUp]
+        [TestInitialize]
         public void Init()
         {
             fonts = new List<WordIntPair>
@@ -35,7 +37,7 @@ namespace Tests.Bitmap
             algorithm = new ColumnsAlgorithm();
         }
 
-        [Test]
+        [TestMethod]
         public void GetBitmap_should_return_bitmap()
         {
             var result = algorithm.GetBitmap(fonts, options);
@@ -43,7 +45,7 @@ namespace Tests.Bitmap
             Assert.AreEqual(typeof(System.Drawing.Bitmap), result.GetType());
         }
 
-        [Test]
+        [TestMethod]
         public void GetBitmap_should_return_bitmap_with_width_eq_100()
         {
             var result = algorithm.GetBitmap(fonts, options);
@@ -51,7 +53,7 @@ namespace Tests.Bitmap
             Assert.AreEqual(result.Width, 100);
         }
 
-        [Test]
+        [TestMethod]
         public void GetBitmap_should_return_bitmap_with_height_eq_100()
         {
             var result = algorithm.GetBitmap(fonts, options);
@@ -59,7 +61,7 @@ namespace Tests.Bitmap
             Assert.AreEqual(result.Height, 100);
         }
 
-        [Test]
+        [TestMethod]
         public void ColumnsAlgorithm_GetBitmap_should_return_first_pixel_in_background_color()
         {
             var result = algorithm.GetBitmap(fonts, options);

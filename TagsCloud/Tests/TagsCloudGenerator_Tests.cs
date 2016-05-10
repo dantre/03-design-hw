@@ -1,20 +1,22 @@
 ﻿using System.Drawing;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Ninject;
 using NSubstitute;
-using NUnit.Framework;
+
 using TagsCloud;
 using TagsCloud.Data.Readers;
 using TagsCloud.NInject;
 using TagsCloud.Options;
 
+
 namespace Tests
 {
-    [TestFixture]
+    [TestClass]
     class TagsCloudGenerator_Tests
     {
         private InputOptions options;
         private TagsCloudGenerator generator;
-        [SetUp]
+        [TestInitialize]
         public void Init()
         {
             options = new InputOptions
@@ -38,21 +40,21 @@ namespace Tests
             generator = new TagsCloudGenerator(options);
         }
 
-        [Test]
+        [TestMethod]
         public void Generate_should_return_bitmap()
         {
             var bitmap = generator.Generate();
             Assert.AreEqual(typeof(System.Drawing.Bitmap), bitmap.GetType());
         }
 
-        [Test]
+        [TestMethod]
         public void  Generate_should_return_bitmap_with_height_100()
         {
             var bitmap = generator.Generate();
             Assert.AreEqual(100, bitmap.Height);
         }
 
-        [Test]
+        [TestMethod]
         public void Generate_should_return_bitmap_with_first_pixel_red()
         {
             var bitmap = generator.Generate();

@@ -3,6 +3,7 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using CommandLine;
+using Ninject;
 using TagsCloud.Options;
 
 namespace TagsCloud
@@ -21,28 +22,26 @@ namespace TagsCloud
             var options = new InputOptions();
             if (Parser.Default.ParseArguments(args, options))
             {
-                if (!File.Exists(options.InputFile))
+                string message;
+                if (InputOptionsValidator.IsValid(options, out message))
                 {
-                    Console.WriteLine("File not found.");
-                    return;
+                    Console.WriteLine(message);
                 }
+
                 var generator = new TagsCloudGenerator(options);
-                Image image;
                 try
                 {
-                    image = generator.Generate();
+                    Image image = generator.Generate();
+                    image.Save(options.OutputFile, ImageFormat.Png);
                 }
                 catch (UnknownAlgorithmException)
                 {
                     Console.WriteLine("Unknown algorithm");
-                    return;
                 }
                 catch (ArgumentException)
                 {
-                    Console.WriteLine("Wrong arguments value");  
-                    return;
+                    Console.WriteLine("Wrong arguments value");
                 }
-                image.Save(options.OutputFile, ImageFormat.Png);
             }
             else
             {
