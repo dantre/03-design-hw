@@ -12,7 +12,7 @@ namespace Tests.Options
         public void Init()
         {
             options = new InputOptions();
-            validator = new InputOptionsValidator(options);
+            validator = new InputOptionsValidator();
         }
 
         [TestMethod]

@@ -10,31 +10,12 @@ namespace TagsCloud
 {
     public class ConsoleProgram
     {
-        private string[] args;
-        private IOptionsValidator Validator { get; set; }
+        private readonly InputOptions options = new InputOptions();
 
-        public ConsoleProgram(string[] args)
+        public void Run(string[] arguments)
         {
-            this.args = args;
-        }
-
-        public void Run()
-        {
-            var options = new InputOptions();
-            if (!Parser.Default.ParseArguments(args, options))
-            {
-                Console.WriteLine("Command line parser error");
+            if (!IsOptionsProper(arguments))
                 return;
-            }
-            
-            Validator = new InputOptionsValidator(options);
-            string message;
-            if (!Validator.IsValid(out message))
-            {
-                Console.WriteLine(message);
-                return;
-            }
-
             var generator = new TagCloudGenerator(options);
             try
             {
@@ -50,6 +31,33 @@ namespace TagsCloud
                 Console.WriteLine("Wrong arguments value");
             }
         }
+
+        private bool IsOptionsProper(string[] arguments)
+        {
+            return ParserAccepts(arguments) && ValidatorAccepts();
+        }
+
+        private bool ParserAccepts(string[] arguments)
+        {
+            if (!Parser.Default.ParseArguments(arguments, options))
+            {
+                Console.WriteLine("Arguments parsing error");
+                return false;
+            }
+            return true;
+        }
+
+        private bool ValidatorAccepts()
+        {
+            string message;
+            if (!Program.AppKernel.Get<IOptionsValidator>().IsValid(options, out message))
+            {
+                Console.WriteLine(message);
+                return false;
+            }
+            return true;
+        }
+
     }
 
     public class UnknownAlgorithmException : Exception
