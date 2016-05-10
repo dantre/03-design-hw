@@ -75,6 +75,7 @@
     <Compile Include="Data\FontProcessor_Tests.cs" />
     <Compile Include="Data\FrequencyCounter_Tests.cs" />
     <Compile Include="Bitmap\LineAlgorithm_Tests.cs" />
+    <Compile Include="Options\InputOptionsValidtor_Tests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Data\Extractors\WordsOnePerLineExtractor_Tests.cs" />
     <Compile Include="Data\WordsFilter_Tests.cs" />

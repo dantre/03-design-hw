@@ -10,7 +10,7 @@ namespace TagsCloud.Options
     public class InputOptionsValidator : IOptionsValidator
     {
         private InputOptions Options { get; }
-
+        private readonly ColorChecker colorChecker = new ColorChecker();
         private readonly Dictionary<Func<bool>, string> RulesAndErrorMessages;
 
         public InputOptionsValidator(InputOptions options)
@@ -41,52 +41,63 @@ namespace TagsCloud.Options
             message = "";
             return true;
         }
-
-        private bool CheckInputFile()
-        {
-            return File.Exists(Options.InputFile);
-        }
-
-        private bool CheckWidth()
-        {
-            return IsParameterInSegment(Options.Width, 40, 2048);
-        }
-
-        private bool CheckHeight()
-        {
-            return IsParameterInSegment(Options.Height, 40, 2048);
-        }
-
-        private bool CheckMinFont()
-        {
-            return IsParameterInSegment(Options.MinFont, 8, Options.MaxFont);
-        }
-
-        private bool CheckMaxFont()
-        {
-            return IsParameterInSegment(Options.MaxFont, Options.MinFont, 70);
-        }
-
-        private bool CheckTextColor()
-        {
-            return colorChecker.IsColorExists(Options.TextColor);
-        }
-
-        private bool CheckBackgroundColor()
-        {
-            return colorChecker.IsColorExists(Options.BackgroundColor);
-        }
-
-        private readonly ColorChecker colorChecker = new ColorChecker();
-
         public bool IsParameterInSegment(int value, int minValue, int maxValue)
         {
             return value >= minValue && value <= maxValue;
         }
+        #region Options checks
+        public bool CheckInputFile()
+        {
+            return File.Exists(Options.InputFile);
+        }
+
+        public bool CheckWidth()
+        {
+            return IsParameterInSegment(Options.Width, 40, 2048);
+        }
+
+        public bool CheckHeight()
+        {
+            return IsParameterInSegment(Options.Height, 40, 2048);
+        }
+
+        public bool CheckMinFont()
+        {
+            return IsParameterInSegment(Options.MinFont, 8, Options.MaxFont);
+        }
+
+        public bool CheckMaxFont()
+        {
+            return IsParameterInSegment(Options.MaxFont, Options.MinFont, 70);
+        }
+
+        public bool CheckTextColor()
+        {
+            return colorChecker.IsColorExists(Options.TextColor);
+        }
+
+        public bool CheckAlgorithm()
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool CheckBackgroundColor()
+        {
+            return colorChecker.IsColorExists(Options.BackgroundColor);
+        }
+        #endregion
     }
 
     public interface IOptionsValidator
     {
         bool IsValid(out string message);
+        bool CheckInputFile();
+        bool CheckWidth();
+        bool CheckHeight();
+        bool CheckMinFont();
+        bool CheckMaxFont();
+        bool CheckTextColor();
+        bool CheckBackgroundColor();
+        bool CheckAlgorithm();
     }
 }
